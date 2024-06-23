@@ -10,10 +10,17 @@ Format:
 - (K + 1)th line to the end: all the sources that you have referred to in your code. Or you can referred that source is 'by yourself'
 
 Runtime function structure:
+
 auto start = chrono::system_clock::now();
+
 ....
+
 ....
+
 auto end = chrono::system_clock::now();
+
 // Calculate the duration
+
 auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+
 run_time = duration.count();
