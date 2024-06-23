@@ -1,35 +1,13 @@
-#include <iostream>
-#include <iomanip>
-#include <chrono>
-#include <fstream>
-#include <cmath>
-#include <time.h>
+#include "header_file.h"
 
-using namespace std;
-
-template <class T>
-
-
-//source for algorithm: https://www.geeksforgeeks.org/bubble-sort/
-//count_comparision is done by myself
-//calculate runtime source code: https://stackoverflow.com/questions/11062804/measuring-the-runtime-of-a-c-code
-
+//subfunction
 void swap(int &xp, int &yp) {
     int temp = xp;
     xp = yp;
     yp = temp;
 }
 
-void GenerateRandomData(int a[], int n)
-{
-	srand((unsigned int)time(NULL));
-
-	for (int i = 0; i < n; i++)
-	{
-		a[i] = rand()%n;
-	}
-}
-
+//count comparisions
 void bubbleSortCountComparision(int arr[], int n, long long& count_comparision)
 {
     int i, j;
@@ -43,14 +21,12 @@ void bubbleSortCountComparision(int arr[], int n, long long& count_comparision)
             }
         }
 
-        // If no two elements were swapped
-        // by inner loop, then break
         if (++count_comparision && swapped == false)
             break;
     }
 }
 
-
+//find runtime
 void bubbleSortFindRunTime(int arr[], int n, long long& run_time)
 {
     auto start = chrono::system_clock::now();
@@ -74,26 +50,7 @@ void bubbleSortFindRunTime(int arr[], int n, long long& run_time)
     run_time = duration.count();
 }
 
-
-// Function to print an array
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-        cout << " " << arr[i];
-}
-
-
-int main()
-{
-    int arr[1000];
-    int n = 1000;
-    GenerateRandomData(arr, n);
-    long long count_comparision = 0;
-    // bubbleSortCountComparision(arr, N, count_comparision);
-    bubbleSortFindRunTime(arr, n, count_comparision);
-    //cout << "Sorted array: \n";
-    printArray(arr, n);
-    cout << endl << count_comparision << endl;
-    return 0;
-}
+//REFERENCES:
+//source for algorithm: https://www.geeksforgeeks.org/bubble-sort/
+//count_comparision is done by myself
+//calculate runtime source code: https://stackoverflow.com/questions/11062804/measuring-the-runtime-of-a-c-code
