@@ -126,7 +126,7 @@ OPTIMIZED:
 REFERENCES :
     + Basic Quick Sort is refer to my teammate.
     + Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi.
-	+ Chat-GPT: https://chatgpt.com/share/7264684e-a209-41af-bfe7-1643118ccf1b
+    + Chat-GPT: https://chatgpt.com/share/7264684e-a209-41af-bfe7-1643118ccf1b
 
 */
 
