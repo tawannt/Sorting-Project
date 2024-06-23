@@ -34,7 +34,7 @@ void heapSort(int *&arr, int n)
     }
 }
 
-void heapifyCountComparision(int *&arr, int n, int i, int count_comparisions)
+void heapifyCountComparision(int *&arr, int n, int i, int &count_comparisions)
 {
     int largest = i;
     
