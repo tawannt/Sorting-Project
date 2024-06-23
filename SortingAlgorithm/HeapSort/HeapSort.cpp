@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+include "header_file.h"
 
 void heapify(int *&arr, int n, int i)
 {
@@ -53,7 +51,7 @@ void heapifyCountComparision(int *&arr, int n, int i, int count_comparisions)
     if(largest != i && ++count_comparisions)
     {
         swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        heapifyCountComparisions(arr, n, largest, count_comparisions);
     }
 }
 
