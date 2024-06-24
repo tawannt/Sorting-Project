@@ -10,13 +10,13 @@
 #include "DataGenerator.cpp"
 using namespace std;
 
-void bubbleSortCompare(int *&arr, int n, long long &count_comparisons);
-void bubbleSortRunTime(int *&arr, int n, long long &time);
+void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions);
+void bubbleSortFindRunTime(int *&arr, int n, long long &time);
 
-void countingSortCompare(int *&arr, int n, long long &count_comparisons);
-void countingSortRunTime(int *&arr, int n, long long &time);
+void countingSortCountComparisons(int *&arr, int n, long long &count_comparisons);
+void countingSortFindRunTime(int *&arr, int n, long long &time);
 
-void insertionSort(int *arr, int n);
+
 void flashSortRunTime(int *&arr, int n, long long &time);
 void insertionSortCompare_1(int *arr, int n, long long &count_comparisons);
 void flashSortCompare(int *&arr, int n, long long &count_comparisons);
@@ -26,6 +26,7 @@ void heapSortRunTime(int *&arr, int n, long long &time);
 void heapifyCompare(int *&arr, int n, int i, long long &count_comparisons);
 void heapSortCompare(int *&arr, int n, long long &count_comparisons);
 
+void insertionSort(int *arr, int n);
 void insertionSortCompare(int *&arr, int n, long long &count_comparisons);
 void insertionSortRunTime(int *&arr, int n, long long &time);
 
