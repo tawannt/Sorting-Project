@@ -1,4 +1,4 @@
-include "header_file.h"
+#include "../header.h"
 
 void heapify(int *&arr, int n, int i)
 {
@@ -24,7 +24,7 @@ void heapify(int *&arr, int n, int i)
 void heapSort(int *&arr, int n)
 {
     //build max heap
-    for(int i = n/2 - 1; i >= 0; i--)
+    for(int i = n / 2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
     for(int i = n - 1; i > 0; i--)
@@ -34,7 +34,7 @@ void heapSort(int *&arr, int n)
     }
 }
 
-void heapifyCountComparision(int *&arr, int n, int i, int &count_comparisions)
+void heapifyCountComparisons(int *&arr, int n, int i, int &count_comparisions)
 {
     int largest = i;
     
@@ -51,26 +51,26 @@ void heapifyCountComparision(int *&arr, int n, int i, int &count_comparisions)
     if(largest != i && ++count_comparisions)
     {
         swap(arr[i], arr[largest]);
-        heapifyCountComparisions(arr, n, largest, count_comparisions);
+        heapifyCountComparisons(arr, n, largest, count_comparisions);
     }
 }
 
-void heapSortCountComparision(int *&arr, int n, int &count_comparisions)
+void heapSortCountComparison(int *&arr, int n, int &count_comparisions)
 {
     count_comparisions = 0;
     for(int i = n/2 - 1; i >= 0; i--)
-        heapifyCountComparision(arr, n, i, count_comparisions);
+        heapifyCountComparisons(arr, n, i, count_comparisions);
 
     for(int i = n - 1; i > 0; i--)
     {
         swap(arr[i], arr[0]);
-        heapifyCountComparision(arr, i, 0, count_comparisions);
+        heapifyCountComparisons(arr, i, 0, count_comparisions);
     }
 }
 
 void heapSortFindRunTime(int *&arr, int n, int &run_time)
 {
-    auto start = chrono::system_clock::now();
+    clock_t begin = clock();
     for(int i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
@@ -79,9 +79,12 @@ void heapSortFindRunTime(int *&arr, int n, int &run_time)
         swap(arr[i], arr[0]);
         heapify(arr, i, 0);
     }
-    auto end = chrono::system_clock::now();
 
     // Calculate the duration
-    auto duration = chrono::duration_castchrono::microseconds(end - start);
-    run_time = duration.count();
+    clock_t end = clock();
+    
+    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
+
+
+// thieu report

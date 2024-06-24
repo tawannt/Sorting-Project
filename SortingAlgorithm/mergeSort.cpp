@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <chrono>
-using namespace std;
+#include "../header.h"
 
 void merge(int array[], int const left, int const mid, int const right, long long& count_comparison) {
     int const subArrayOne = mid - left + 1;
@@ -37,12 +34,12 @@ void merge(int array[], int const left, int const mid, int const right, long lon
     delete[] rightArray;
 }
 
-void mergeSortCountComparison(int array[], int const begin, int const end, long long& count_comparison) {
+void mergeSortCountComparisons(int array[], int const begin, int const end, long long& count_comparison) {
     if (++count_comparison && begin >= end)
         return;
     int mid = begin + (end - begin) / 2;
-    mergeSortCountComparison(array, begin, mid, count_comparison);
-    mergeSortCountComparison(array, mid + 1, end, count_comparison);
+    mergeSortCountComparisons(array, begin, mid, count_comparison);
+    mergeSortCountComparisons(array, mid + 1, end, count_comparison);
     merge(array, begin, mid, end, count_comparison);
 }
 
@@ -81,7 +78,7 @@ void merge(int array[], int const left, int const mid, int const right) {
 }
 
 void mergeSortFindRunTime(int array[], int const begin, int const end, long long& run_time) {
-    auto start = chrono::system_clock::now();
+    clock_t start = clock();
     if (begin >= end) {
         return;
     }
@@ -89,9 +86,7 @@ void mergeSortFindRunTime(int array[], int const begin, int const end, long long
     mergeSortFindRunTime(array, begin, mid, run_time);
     mergeSortFindRunTime(array, mid + 1, end, run_time);
     merge(array, begin, mid, end);
-    auto end_time = chrono::system_clock::now();
-    auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start);
-    run_time += duration.count();
+    
 }
 
 

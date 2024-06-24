@@ -1,8 +1,7 @@
 #include "../header.h"
 
-
-
-void flashSortCountComparison(int arr[], int n, long long& count_comparison) {
+void flashSortCountComparisons(int arr[], int n, long long& count_comparison) 
+{
     if (++count_comparison && n <= 1) return;
 
     int min_val = arr[0], max_val = arr[0];
@@ -53,7 +52,8 @@ void flashSortCountComparison(int arr[], int n, long long& count_comparison) {
     }
 }
 
-void flashSortFindRunTime(int arr[], int n, long long& run_time) {
+void flashSortFindRunTime(int arr[], int n, long long& run_time) 
+{
     clock_t begin = clock();
 
     if (n <= 1) return;
@@ -106,65 +106,63 @@ void flashSortFindRunTime(int arr[], int n, long long& run_time) {
     }
 
     clock_t end = clock();
-    run_time = (long long)( (end - begin) / CLOCKS_PER_SEC * 1000);
+    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
 
+/*
+Reference: 
+https://codelearn.io/sharing/flash-sort-thuat-toan-sap-xep-than-thanh
+https://en.wikipedia.org/wiki/Flashsort
+https://the-algorithms.com/algorithm/flash-sort
+count_comparision is done by myself
+calculate runtime source code: https://stackoverflow.com/questions/11062804/measuring-the-runtime-of-a-c-code
 
 
-// Reference: 
-//https://codelearn.io/sharing/flash-sort-thuat-toan-sap-xep-than-thanh
-//https://en.wikipedia.org/wiki/Flashsort
-//https://the-algorithms.com/algorithm/flash-sort
-//count_comparision is done by myself
-//calculate runtime source code: https://stackoverflow.com/questions/11062804/measuring-the-runtime-of-a-c-code
 
+IDEAS:
+    Flash Sort (or Distribution Sort) divides the array into a number of buckets based on the distribution of elements, sorts each bucket individually, and then combines them to achieve a sorted array.
 
+STEP BY STEP DESCRIPTION:
+    1. Determine the number of buckets based on the distribution of elements in the array. Allocate space for each bucket.
+    2. Distribute each element of the array into its corresponding bucket based on a calculated distribution formula.
+    3. Sort each bucket individually using an efficient sorting algorithm (typically Insertion Sort due to its performance on small datasets).
+    4. Combine the sorted buckets to obtain the final sorted array.
 
-// IDEAS:
-//     Flash Sort (or Distribution Sort) divides the array into a number of buckets based on the distribution of elements, sorts each bucket individually, and then combines them to achieve a sorted array.
+COMPLEXITY EVALUATIONS:
+Let n be the number of elements in the array.
 
-// STEP BY STEP DESCRIPTION:
-//     1. Determine the number of buckets based on the distribution of elements in the array. Allocate space for each bucket.
-//     2. Distribute each element of the array into its corresponding bucket based on a calculated distribution formula.
-//     3. Sort each bucket individually using an efficient sorting algorithm (typically Insertion Sort due to its performance on small datasets).
-//     4. Combine the sorted buckets to obtain the final sorted array.
+1/ Time complexity analysis:
+   + Mathematics proof:
+        Flash Sort's time complexity heavily depends on the distribution calculation and the sorting algorithm used for each bucket.
+        - Distribution step: O(n + m), where m is the range of values.
+        - Sorting step: O(n^2/k), where k is the number of buckets.
+        Flash Sort achieves O(n) time complexity when properly implemented with an optimal distribution function and efficient bucket sorting.
+   + Best case: O(n)
+        Flash Sort can achieve linear time complexity when the distribution is uniform and the number of buckets is optimal.
+   + Worst case: O(n^2)
+        In the worst-case scenario, when the distribution is poor or sorting within buckets is inefficient, Flash Sort can degrade to quadratic time complexity.
+   + Average case: O(n)
+        On average, Flash Sort performs efficiently with linear time complexity due to its distribution and sorting steps.
 
-// COMPLEXITY EVALUATIONS:
-// Let n be the number of elements in the array.
+2/ Space complexity analysis:
+    Flash Sort is an in-place sorting algorithm, meaning it requires minimal additional space beyond the input array for bucket allocations. Its space complexity is O(n) in the worst case due to bucket allocations.
 
-// 1/ Time complexity analysis:
-//    + Mathematics proof:
-//         Flash Sort's time complexity heavily depends on the distribution calculation and the sorting algorithm used for each bucket.
-//         - Distribution step: O(n + m), where m is the range of values.
-//         - Sorting step: O(n^2/k), where k is the number of buckets.
-//         Flash Sort achieves O(n) time complexity when properly implemented with an optimal distribution function and efficient bucket sorting.
-//    + Best case: O(n)
-//         Flash Sort can achieve linear time complexity when the distribution is uniform and the number of buckets is optimal.
-//    + Worst case: O(n^2)
-//         In the worst-case scenario, when the distribution is poor or sorting within buckets is inefficient, Flash Sort can degrade to quadratic time complexity.
-//    + Average case: O(n)
-//         On average, Flash Sort performs efficiently with linear time complexity due to its distribution and sorting steps.
+SUMMARY:
+    + Advantage:
+        - Efficient sorting algorithm with potential linear time complexity in optimal scenarios.
+        - Particularly effective for datasets with a uniform distribution of values.
+        - In-place sorting algorithm with minimal additional space requirements.
+    + Disadvantage:
+        - Sensitive to the distribution of values and choice of bucket count.
+        - Can degrade to quadratic time complexity in unfavorable scenarios.
+        - Requires careful implementation of the distribution function and bucket sorting for optimal performance.
 
-// 2/ Space complexity analysis:
-//     Flash Sort is an in-place sorting algorithm, meaning it requires minimal additional space beyond the input array for bucket allocations. Its space complexity is O(n) in the worst case due to bucket allocations.
-
-// SUMMARY:
-//     + Advantage:
-//         - Efficient sorting algorithm with potential linear time complexity in optimal scenarios.
-//         - Particularly effective for datasets with a uniform distribution of values.
-//         - In-place sorting algorithm with minimal additional space requirements.
-//     + Disadvantage:
-//         - Sensitive to the distribution of values and choice of bucket count.
-//         - Can degrade to quadratic time complexity in unfavorable scenarios.
-//         - Requires careful implementation of the distribution function and bucket sorting for optimal performance.
-
-// OPTIMIZED:
-//     To optimize Flash Sort, focus on:
-//     - Designing an efficient distribution function that minimizes the spread of values among buckets.
-//     - Implementing an efficient sorting algorithm (like Insertion Sort) for sorting small buckets.
-//     - Adjusting the number of buckets based on the distribution of elements to balance sorting efficiency and memory usage.
-
-
+OPTIMIZED:
+    To optimize Flash Sort, focus on:
+    - Designing an efficient distribution function that minimizes the spread of values among buckets.
+    - Implementing an efficient sorting algorithm (like Insertion Sort) for sorting small buckets.
+    - Adjusting the number of buckets based on the distribution of elements to balance sorting efficiency and memory usage.
+*/
 
 
 

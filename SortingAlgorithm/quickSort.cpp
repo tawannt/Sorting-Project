@@ -33,7 +33,7 @@ void quickSortFindRunTime(int *&arr, int n, long long &time)
     clock_t begin = clock();
     quickSort(arr, 0, n - 1);
     clock_t end = clock();
-    time = (long long)(end - begin);
+    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
 
 

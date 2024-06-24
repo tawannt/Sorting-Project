@@ -9,7 +9,7 @@ void swap(int &xp, int &yp)
 }
 
 // count comparisions
-void bubbleSortCountComparisions(int* &arr, int n, long long& count_comparisions)
+void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions)
 {
     int i, j;
     bool swapped;
@@ -49,6 +49,7 @@ void bubbleSortFindRunTime(int* &arr, int n, long long& run_time)
 
     run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
+
 /*
 REFERENCES:
 source for algorithm: https://www.geeksforgeeks.org/bubble-sort/

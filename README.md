@@ -3,7 +3,7 @@ Format:
 - First Line: #include "header.h"
     + The file "header.h" will be created later whose contents is libraries in C++
 - Second Line: white space
-- Third Line to Nth line: the code of the function name: " 'sort_algorithm_name'CountComparision ". Ex: "void bubbleSortCountComparision(...)"
+- Third Line to Nth line: the code of the function name: " 'sort_algorithm_name'CountComparision ". Ex: "void bubbleSortCountComparisons(...)"
     + Of course, we can add more subfunctions
 - (N+1)th Line to Kth line: the code of the function name: " 'sort_algorithm_name'FindRunTime ". Ex: "void bubbleSortFindRunTime(...)"
     + Of course, we can add more subfunctions
