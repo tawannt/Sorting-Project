@@ -37,9 +37,9 @@ void mergeSortCount(int*& arr, int l, int r, long long &count);
 void mergeSortCompare(int *&arr, int n, long long &count_comparisons);
 
 void quickSort(int *&arr, int left, int right);
-void quick_sort_run_time(int *&arr, int n, long long &time);
-void quick_sort_help_count(int *&arr, int left, int right, long long &cnt);
-void quick_sort_comparisons(int *&arr, int n, long long &cnt_cmp);
+void quickSortFindRunTime(int *&arr, int n, long long &time);
+void quickSortHelpCount(int *&arr, int left, int right, long long &cnt);
+void quickSortCountComparison(int *&arr, int n, long long &cnt_cmp);
 
 int getMax(int *&arr, int n);
 void countSort(int *&arr, int n, int exp);
