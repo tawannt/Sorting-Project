@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../header.h"
 
 int getMax(int *&arr, int n)
 {
@@ -47,7 +47,7 @@ void radixSort(int *&arr, int n)
     // where i is the current digit number
     for(int exp = 1; max_val / exp > 0; exp *= 10)
     {
-        counSort(arr, n, exp);
+        countSort(arr, n, exp);
     }
 }
 
