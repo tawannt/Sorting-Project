@@ -1,4 +1,5 @@
 #include "header.h"
+#include "cmd.h"
 
 
 int *readFile(string fileName, int &size)
@@ -7,7 +8,7 @@ int *readFile(string fileName, int &size)
     if(!ifs.is_open())
     {
         cout << "Cannot open input file!\n";
-        return;
+        return NULL;
     }
 
     //read file
@@ -153,4 +154,9 @@ void Analysis(void (*findRunTime)(int *&, int, long long &), void (*countCompari
     {
         countComparisons(arr, size, count_comparison);
     }
+}
+
+void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size)
+{
+    
 }
