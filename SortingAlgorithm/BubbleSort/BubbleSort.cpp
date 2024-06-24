@@ -1,4 +1,4 @@
-#include "header.h"
+#include "./header.h"
 
 //subfunction
 void swap(int &xp, int &yp) {
@@ -8,26 +8,26 @@ void swap(int &xp, int &yp) {
 }
 
 //count comparisions
-void bubbleSortCountComparision(int arr[], int n, long long& count_comparision)
+void bubbleSortCountComparisions(int* &arr, int n, long long& count_comparisions)
 {
     int i, j;
     bool swapped;
-    for (i = 0; ++count_comparision && i < n - 1; i++) {
+    for (i = 0; ++count_comparisions && i < n - 1; i++) {
         swapped = false;
-        for (j = 0; ++count_comparision && j < n - i - 1; j++) {
-            if (++count_comparision && arr[j] > arr[j + 1]) {
+        for (j = 0; ++count_comparisions && j < n - i - 1; j++) {
+            if (++count_comparisions && arr[j] > arr[j + 1]) {
                 swap(arr[j], arr[j + 1]);
                 swapped = true;
             }
         }
 
-        if (++count_comparision && swapped == false)
+        if (++count_comparisions && swapped == false)
             break;
     }
 }
 
 //find runtime
-void bubbleSortFindRunTime(int arr[], int n, long long& run_time)
+void bubbleSortFindRunTime(int* &arr, int n, long long& run_time)
 {
     clock_t begin = clock();
     int i, j;
