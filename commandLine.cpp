@@ -208,5 +208,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         cout << "Running time: " << time_1 << " | " << time_2 << '\n';
         cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
 
+        delete[] arr;
     }
+    else cout << "Error!!!\n";
 }
