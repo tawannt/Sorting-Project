@@ -10,6 +10,8 @@ Format:
 - (K + 1)th line to the end: all the sources that you have referred to in your code. Or you can referred that source is 'by yourself'
 
 
+=> function name type: camelCase.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -24,3 +26,6 @@ clock_t begin = clock();
 clock_t end = clock();
 
 time = (long long)(end - begin);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
