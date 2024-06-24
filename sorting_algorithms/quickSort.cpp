@@ -41,7 +41,7 @@ void quickSortFindRunTime(int *&arr, int n, long long &time)
 
 
 // counting comparisons 
-void quick_sort_help_count(int *&arr, int left, int right, long long &cnt)
+void quickSortHelpCount(int *&arr, int left, int right, long long &cnt)
 {
     int pivot = arr[(left + right) / 2];
     int i = left;
@@ -63,14 +63,14 @@ void quick_sort_help_count(int *&arr, int left, int right, long long &cnt)
         }
     }
 
-    if(left < j) quick_sort_help_count(arr, left, j, cnt);
-    if(right > i) quick_sort_help_count(arr, i, right, cnt);
+    if(left < j) quickSortHelpCount(arr, left, j, cnt);
+    if(right > i) quickSortHelpCount(arr, i, right, cnt);
 }
 
-void quick_sort_comparisons(int *&arr, int n, long long &cnt_cmp)
+void quickSortCountComparison(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
-    quick_sort_help_count(arr, 0, n - 1, cnt_cmp);
+    quickSortHelpCount(arr, 0, n - 1, cnt_cmp);
 }
 
 
