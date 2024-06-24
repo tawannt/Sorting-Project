@@ -97,10 +97,12 @@ void mergeSortFindRunTime(int array[], int const begin, int const end, long long
 
 //Reference:
 //https://www.geeksforgeeks.org/merge-sort/
-//
-
-
-
+//count_comparision is done by myself
+//calculate runtime source code: https://www.geeksforgeeks.org/how-to-measure-time-taken-by-a-program-in-c/
+//algorithm description:
+    //  Book:Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein Introduction to Algorithms, Third Edition  2009 (page 30->39)
+    // + https://en.wikipedia.org/wiki/Merge_sort
+    // + ChatGPT.
 
 // IDEAS:
 //     Merge Sort divides the array into halves recursively until each sub-array contains only one element. It then merges these sub-arrays back together in sorted order.
