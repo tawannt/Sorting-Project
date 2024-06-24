@@ -1,6 +1,6 @@
-#include "../header.h"
+#include "header.h"
 
-int get_max(int *&arr, int n)
+int getMax(int *&arr, int n)
 {
     int max_val = arr[0];
 
@@ -11,7 +11,7 @@ int get_max(int *&arr, int n)
     return max_val;
 }
 
-void count_sort(int *&arr, int n, int exp)
+void countSort(int *&arr, int n, int exp)
 {
     int *output = new int[n]; // Allocate memory for the output array dynamically
     int count_digit[10] = {0}; // Array to store count of occurrences of digits
@@ -37,31 +37,31 @@ void count_sort(int *&arr, int n, int exp)
 
 
 // basic radix_sort
-void radix_sort(int *&arr, int n)
+void radixSort(int *&arr, int n)
 {
     // Find the maximum number to know the number of digits
-    int max_val = get_max(arr, n);
+    int max_val = getMax(arr, n);
 
     // Do count sort for every digit. Note that instead
     // of passing digit number, exp is passed. exp is 10^i
     // where i is the current digit number
     for(int exp = 1; max_val / exp > 0; exp *= 10)
     {
-        count_sort(arr, n, exp);
+        counSort(arr, n, exp);
     }
 }
 
 
 // count run time
-void radix_sort_run_time(int *&arr, int n, long long &time)
+void radixSortFindRunTime(int *&arr, int n, long long &time)
 {
     clock_t begin = clock();
 
-    int max_val = get_max(arr, n);
+    int max_val = getMax(arr, n);
 
     for(int exp = 1; max_val / exp > 0; exp *= 10)
     {
-        count_sort(arr, n, exp);
+        countSort(arr, n, exp);
     }
 
     clock_t end = clock();
@@ -71,7 +71,7 @@ void radix_sort_run_time(int *&arr, int n, long long &time)
 
 
 // count comparisons 
-int get_max_compare(int *&arr, int n, long long &cnt_cmp)
+int getMaxCompare(int *&arr, int n, long long &cnt_cmp)
 {
     int max_val = arr[0];
     
@@ -82,7 +82,7 @@ int get_max_compare(int *&arr, int n, long long &cnt_cmp)
     return max_val;
 }
 
-void count_sort_compare(int *&arr, int n, int exp, long long &cnt_cmp)
+void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp)
 {
     int *output = new int [n];
     int count_digit[10] = {0};
@@ -102,14 +102,14 @@ void count_sort_compare(int *&arr, int n, int exp, long long &cnt_cmp)
     delete[] output;
 }
 
-void radix_sort_compare(int *&arr, int n, long long &cnt_cmp)
+void radixSortCountCompare(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
-    int max_val = get_max_compare(arr, n, cnt_cmp);
+    int max_val = getMaxCompare(arr, n, cnt_cmp);
 
     for(int exp = 1; ++cnt_cmp && max_val / exp > 0; exp *= 10)
     {
-        count_sort_compare(arr, n, exp, cnt_cmp);
+        countSortCompare(arr, n, exp, cnt_cmp);
     }
 }
 
