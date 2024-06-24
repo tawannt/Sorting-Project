@@ -22,4 +22,5 @@ clock_t begin = clock();
 
 
 clock_t end = clock();
+
 time = (long long)(end - begin);
