@@ -1,6 +1,5 @@
 #include "../header.h"
 
-
 // basic shaker_sort
 void shakerSort(int *&arr, int n)
 {
@@ -45,6 +44,48 @@ void shakerSort(int *&arr, int n)
         }
 
         // narrow the bounds of the unsorted part
+        i++;
+        j--;
+    }
+}
+
+// counting comparisons 
+void shakerSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
+{
+    cnt_cmp = 0;
+    bool swapped = true;
+    int i = 0;
+    int j = n - 1;
+
+    while (++cnt_cmp && swapped == true)
+    {
+        swapped = false;
+
+        for(int k = i; ++cnt_cmp && k < j; k++)
+        {
+            if(++cnt_cmp && arr[k] > arr[k + 1])
+            {
+                int tmp = arr[k];
+                arr[k] = arr[k + 1];
+                arr[k + 1] = tmp;
+                swapped = true;
+            }
+        }
+
+        if(++cnt_cmp && swapped == false) break;
+
+        swapped = false;
+        for(int k = j - 1; k > i; k--)
+        {
+            if(++cnt_cmp && arr[k] < arr[k - 1])
+            {
+                int tmp = arr[k];
+                arr[k] = arr[k - 1];
+                arr[k - 1] = tmp;
+                swapped = true;
+            }
+        }
+
         i++;
         j--;
     }
@@ -95,50 +136,6 @@ void shakerSortFindRunTime(int *&arr, int n, long long &time)
     clock_t end = clock();
     time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
-
-
-// counting comparisons 
-void shakerSortCountComparison(int *&arr, int n, long long &cnt_cmp)
-{
-    cnt_cmp = 0;
-    bool swapped = true;
-    int i = 0;
-    int j = n - 1;
-
-    while (++cnt_cmp && swapped == true)
-    {
-        swapped = false;
-
-        for(int k = i; ++cnt_cmp && k < j; k++)
-        {
-            if(++cnt_cmp && arr[k] > arr[k + 1])
-            {
-                int tmp = arr[k];
-                arr[k] = arr[k + 1];
-                arr[k + 1] = tmp;
-                swapped = true;
-            }
-        }
-
-        if(++cnt_cmp && swapped == false) break;
-
-        swapped = false;
-        for(int k = j - 1; k > i; k--)
-        {
-            if(++cnt_cmp && arr[k] < arr[k - 1])
-            {
-                int tmp = arr[k];
-                arr[k] = arr[k - 1];
-                arr[k - 1] = tmp;
-                swapped = true;
-            }
-        }
-
-        i++;
-        j--;
-    }
-}
-
 
 /* Note for report
 

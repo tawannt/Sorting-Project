@@ -52,24 +52,6 @@ void radixSort(int *&arr, int n)
 }
 
 
-// count run time
-void radixSortFindRunTime(int *&arr, int n, long long &time)
-{
-    clock_t begin = clock();
-
-    int max_val = getMax(arr, n);
-
-    for(int exp = 1; max_val / exp > 0; exp *= 10)
-    {
-        countSort(arr, n, exp);
-    }
-
-    clock_t end = clock();
-
-    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
-}
-
-
 // count comparisons 
 int getMaxCompare(int *&arr, int n, long long &cnt_cmp)
 {
@@ -102,7 +84,7 @@ void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp)
     delete[] output;
 }
 
-void radixSortCountComparison(int *&arr, int n, long long &cnt_cmp)
+void radixSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     int max_val = getMaxCompare(arr, n, cnt_cmp);
@@ -113,6 +95,23 @@ void radixSortCountComparison(int *&arr, int n, long long &cnt_cmp)
     }
 }
 
+
+// count run time
+void radixSortFindRunTime(int *&arr, int n, long long &time)
+{
+    clock_t begin = clock();
+
+    int max_val = getMax(arr, n);
+
+    for(int exp = 1; max_val / exp > 0; exp *= 10)
+    {
+        countSort(arr, n, exp);
+    }
+
+    clock_t end = clock();
+
+    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+}
 
 /* Note for report
 

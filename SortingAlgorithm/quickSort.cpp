@@ -26,17 +26,6 @@ void quickSort(int *&arr, int left, int right)
     if (i < right) quickSort(arr, i, right);  // recur for right partition
 }
 
-
-// run time
-void quickSortFindRunTime(int *&arr, int n, long long &time)
-{
-    clock_t begin = clock();
-    quickSort(arr, 0, n - 1);
-    clock_t end = clock();
-    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
-}
-
-
 // counting comparisons 
 void quickSortHelpCount(int *&arr, int left, int right, long long &cnt)
 {
@@ -64,12 +53,21 @@ void quickSortHelpCount(int *&arr, int left, int right, long long &cnt)
     if(right > i) quickSortHelpCount(arr, i, right, cnt);
 }
 
-void quickSortCountComparison(int *&arr, int n, long long &cnt_cmp)
+void quickSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     quickSortHelpCount(arr, 0, n - 1, cnt_cmp);
 }
 
+
+// run time
+void quickSortFindRunTime(int *&arr, int n, long long &time)
+{
+    clock_t begin = clock();
+    quickSort(arr, 0, n - 1);
+    clock_t end = clock();
+    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+}
 
 /* Note for report
 

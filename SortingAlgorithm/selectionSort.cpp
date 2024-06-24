@@ -1,7 +1,5 @@
 #include "../header.h"
 
-
-
 // basic Selection Sort
 void selectionSort(int *&arr, int n)
 {
@@ -53,7 +51,7 @@ void selectionSortFindRunTime(int *&arr, int n, long long &time) // you can use 
 }
 
 // counting comparisons
-void selectionSortCountComparison(int *&arr, int n, long long &cnt_cmp)
+void selectionSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 {
 	cnt_cmp = 0;
 
@@ -74,8 +72,6 @@ void selectionSortCountComparison(int *&arr, int n, long long &cnt_cmp)
         }
 	}
 } 
-
-
 
 /* Note for report
 
