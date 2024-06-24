@@ -46,7 +46,7 @@ void bubbleSortFindRunTime(int* &arr, int n, long long& run_time)
 
     clock_t end = clock();
 
-    time = (long long)(end - begin);
+    run_time = (long long)(end - begin);
 }
 
 //REFERENCES:
