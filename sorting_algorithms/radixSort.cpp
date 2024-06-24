@@ -102,7 +102,7 @@ void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp)
     delete[] output;
 }
 
-void radixSortCountCompare(int *&arr, int n, long long &cnt_cmp)
+void radixSortCountComparison(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     int max_val = getMaxCompare(arr, n, cnt_cmp);
