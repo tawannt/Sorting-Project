@@ -1,7 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <chrono>
-using namespace std;
+#include "../header.h"
+
+
 
 void flashSortCountComparison(int arr[], int n, long long& count_comparison) {
     if (++count_comparison && n <= 1) return;
@@ -55,7 +54,7 @@ void flashSortCountComparison(int arr[], int n, long long& count_comparison) {
 }
 
 void flashSortFindRunTime(int arr[], int n, long long& run_time) {
-    auto start = chrono::system_clock::now();
+    clock_t begin = clock();
 
     if (n <= 1) return;
 
@@ -106,9 +105,8 @@ void flashSortFindRunTime(int arr[], int n, long long& run_time) {
         arr[j + 1] = key;
     }
 
-    auto end = chrono::system_clock::now();
-    auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-    run_time = duration.count();
+    clock_t end = clock();
+    run_time = (long long)( (end - begin) / CLOCKS_PER_SEC * 1000);
 }
 
 

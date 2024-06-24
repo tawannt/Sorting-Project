@@ -1,3 +1,6 @@
+#include "header.h"
+
+
 int *readFile(string fileName, int &size)
 {
     ifstream ifs(fileName);
