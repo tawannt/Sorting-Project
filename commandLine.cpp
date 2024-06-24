@@ -19,6 +19,15 @@ int *readFile(string fileName, int &size)
     return arr;
 }
 
+void printOptions()
+{
+    cout << "Command 1: [Execution file] -a [Algorithm] [Given input] [Output parameters(s)]" << endl;
+    cout << "Command 2: [Execution file] -a [Algorithm] [Input size] [Input order] [Output parameters(s)]" << endl;
+    cout << "Command 3: [Execution file] -a [Algorithm] [Input size] [Output parameters(s)]" << endl;
+    cout << "Command 4: [Execution file] -c [Algorithm 1] [Algorithm 2] [Given input]" << endl;
+    cout << "Command 5: [Execution file] -c [Algorithm 1] [Algorithm 2] [Input size] [Input order]" << endl;
+}
+
 void selectAlgorithm(void (*&findRunTime)(int *&, int, long long &), void (*&countComparisions)(int *&, int, long long &), string algorithmName)
 {
     if (algorithmName == "bubble-sort")
