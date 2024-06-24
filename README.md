@@ -20,8 +20,8 @@ Runtime function structure:
 clock_t begin = clock();
 
 ....
-....
 
+....
 
 clock_t end = clock();
 
