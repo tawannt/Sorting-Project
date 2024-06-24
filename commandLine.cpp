@@ -42,61 +42,61 @@ void printOptions()
     cout << "Command 5: [Execution file] -c [Algorithm 1] [Algorithm 2] [Input size] [Input order]" << endl;
 }
 
-void selectAlgorithm(void (*&findRunTime)(int *&, int, long long &), void (*&countComparisions)(int *&, int, long long &), string algorithmName)
+void selectAlgorithm(void (*&findRunTime)(int *&, int, long long &), void (*&countComparisons)(int *&, int, long long &), string algorithmName)
 {
     if (algorithmName == "bubble-sort")
     {
-        countComparisions = bubbleSortCountComparisions;
+        countComparisons = bubbleSortCountComparisons;
         findRunTime = bubbleSortFindRunTime;
     }
     if (algorithmName == "counting-sort")
     {
         findRunTime = countingSortFindRunTime;
-        countComparisions = countingSortCountComparisions;
+        countComparisons = countingSortCountComparisons;
     }
     if (algorithmName == "flash-sort")
     {
-        countComparisions = flashSortCountComparisions;
+        countComparisons = flashSortCountComparisons;
         findRunTime = flashSortFindRunTime;
     }
     if (algorithmName == "heap-sort")
     {
         findRunTime = heapSortFindRunTime;
-        countComparisions = heapSortCountComparisions;
+        countComparisons = heapSortCountComparisons;
     }
     if (algorithmName == "insertion-sort")
     {
         findRunTime = insertionSortFindRunTime;
-        countComparisions = insertionSortCountComparisions;
+        countComparisons = insertionSortCountComparisons;
     }
     if (algorithmName == "merge-sort")
     {
         findRunTime = mergeSortFindRunTime;
-        countComparisions = mergeSortCountComparisions;
+        countComparisons = mergeSortCountComparisons;
     }
     if (algorithmName == "quick-sort")
     {
-        countComparisions = quickSortCountComparisions;
+        countComparisons = quickSortCountComparisons;
         findRunTime = quickSortFindRunTime;
     }
     if (algorithmName == "radix-sort")
     {
-        countComparisions = radixSortCountComparisions;
+        countComparisons = radixSortCountComparisons;
         findRunTime = radixSortFindRunTime;
     }
     if (algorithmName == "selection-sort")
     {
-        countComparisions = selectionSortCountComparisions;
+        countComparisons = selectionSortCountComparisons;
         findRunTime = selectionSortFindRunTime;
     }
     if (algorithmName == "shaker-sort")
     {
         findRunTime = shakerSortFindRunTime;
-        countComparisions = shakerSortCountComparisions;
+        countComparisons = shakerSortCountComparisons;
     }
     if (algorithmName == "shell-sort")
     {
         findRunTime = shellSortFindRunTime;
-        countComparisions = shellSortCountComparisions;
+        countComparisons = shellSortCountComparisons;
     }
 }
