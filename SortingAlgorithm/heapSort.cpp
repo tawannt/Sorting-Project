@@ -14,17 +14,17 @@ void heapify(int *&arr, int n, int i)
     if(right < n && arr[right] > arr[largest])
         largest = right;
     
-    if(largest != i)
+    if(largest != i) //change if the largest is not the root
     {
         swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        heapify(arr, n, largest); //heapify the new root
     }
 }
 
 void heapSort(int *&arr, int n)
 {
     //build max heap
-    for(int i = n / 2 - 1; i >= 0; i--)
+    for(int i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
     for(int i = n - 1; i > 0; i--)
@@ -34,7 +34,7 @@ void heapSort(int *&arr, int n)
     }
 }
 
-void heapifyCountComparisons(int *&arr, int n, int i, int &count_comparisions)
+void heapifyCountComparision(int *&arr, int n, int i, long long &count_comparisions)
 {
     int largest = i;
     
@@ -51,24 +51,24 @@ void heapifyCountComparisons(int *&arr, int n, int i, int &count_comparisions)
     if(largest != i && ++count_comparisions)
     {
         swap(arr[i], arr[largest]);
-        heapifyCountComparisons(arr, n, largest, count_comparisions);
+        heapify(arr, n, largest);
     }
 }
 
-void heapSortCountComparison(int *&arr, int n, int &count_comparisions)
+void heapSortCountComparision(int *&arr, int n, long long &count_comparisions)
 {
     count_comparisions = 0;
-    for(int i = n/2 - 1; i >= 0; i--)
-        heapifyCountComparisons(arr, n, i, count_comparisions);
+    for(int i = n/2 - 1; ++count_comparisions && i >= 0; i--)
+        heapifyCountComparision(arr, n, i, count_comparisions);
 
-    for(int i = n - 1; i > 0; i--)
+    for(int i = n - 1; ++count_comparisions && i > 0; i--)
     {
         swap(arr[i], arr[0]);
-        heapifyCountComparisons(arr, i, 0, count_comparisions);
+        heapifyCountComparision(arr, i, 0, count_comparisions);
     }
 }
 
-void heapSortFindRunTime(int *&arr, int n, int &run_time)
+void heapSortFindRunTime(int *&arr, int n, long long &run_time)
 {
     clock_t begin = clock();
     for(int i = n/2 - 1; i >= 0; i--)
@@ -80,10 +80,8 @@ void heapSortFindRunTime(int *&arr, int n, int &run_time)
         heapify(arr, i, 0);
     }
 
-    // Calculate the duration
     clock_t end = clock();
-    
-    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    run_time = (long long)(end - begin) / CLOCKS_PER_SEC * 1000;
 }
 
 
