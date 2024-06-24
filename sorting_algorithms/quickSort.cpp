@@ -1,10 +1,10 @@
-#include "../header.h"
+#include "header.h"
 
 
 
 
 // basic Quick Sort
-void quick_sort(int *&arr, int left, int right) 
+void quickSort(int *&arr, int left, int right) 
 {
     int pivot = arr[(left + right) / 2];  // pivot selection mid
     int i = left;
@@ -25,13 +25,13 @@ void quick_sort(int *&arr, int left, int right)
         }
     }
     
-    if (left < j) quick_sort(arr, left, j); // recur for left partition
-    if (i < right) quick_sort(arr, i, right);  // recur for right partition
+    if (left < j) quickSort(arr, left, j); // recur for left partition
+    if (i < right) quickSort(arr, i, right);  // recur for right partition
 }
 
 
 // run time
-void quick_sort_run_time(int *&arr, int n, long long &time)
+void quickSortFindRunTime(int *&arr, int n, long long &time)
 {
     clock_t begin = clock();
     quick_sort(arr, 0, n - 1);
