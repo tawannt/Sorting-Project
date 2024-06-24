@@ -34,7 +34,7 @@ void quickSort(int *&arr, int left, int right)
 void quickSortFindRunTime(int *&arr, int n, long long &time)
 {
     clock_t begin = clock();
-    quick_sort(arr, 0, n - 1);
+    quickSort(arr, 0, n - 1);
     clock_t end = clock();
     time = (long long)(end - begin);
 }
