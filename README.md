@@ -1,7 +1,7 @@
 Hi everyone, our group will have some format rules to follow when organizing the 'sorting algorithm' file.
 Format:
-- First Line: "include "header_file.h"
-    + The file "header_file.h" will be created later whose contents is libraries in C++
+- First Line: #include "header.h"
+    + The file "header.h" will be created later whose contents is libraries in C++
 - Second Line: white space
 - Third Line to Nth line: the code of the function name: " 'sort_algorithm_name'CountComparision ". Ex: "void bubbleSortCountComparision(...)"
     + Of course, we can add more subfunctions
@@ -10,21 +10,25 @@ Format:
 - (K + 1)th line to the end: all the sources that you have referred to in your code. Or you can referred that source is 'by yourself'
 
 
+=> function name type: camelCase.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Runtime function structure:
 
-auto start = chrono::system_clock::now();
+clock_t begin = clock();
 
 ....
 
 ....
 
-auto end = chrono::system_clock::now();
+clock_t end = clock();
 
-// Calculate the duration
+time = (long long)(end - begin);
 
-auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-run_time = duration.count();
+STRUCTURE OF ALGORITHM DESCRIPTION:
+
+ChatGPT: https://chatgpt.com/share/7264684e-a209-41af-bfe7-1643118ccf1b
