@@ -2,7 +2,7 @@
 
 
 // basic shaker_sort
-void shaker_sort(int *&arr, int n)
+void shakerSort(int *&arr, int n)
 {
     bool swapped = true;
     int i = 0;
@@ -52,7 +52,7 @@ void shaker_sort(int *&arr, int n)
 
 
 // run time
-void shaker_sort_run_time(int *&arr, int n, long long &time)
+void shakerSortFindRunTime(int *&arr, int n, long long &time)
 {
     clock_t begin = clock();
     bool swapped = true;
@@ -98,7 +98,7 @@ void shaker_sort_run_time(int *&arr, int n, long long &time)
 
 
 // counting comparisons 
-void shaker_sort_compare(int *&arr, int n, long long &cnt_cmp)
+void shakerSortCountComparison(int *&arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     bool swapped = true;
