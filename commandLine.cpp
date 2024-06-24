@@ -19,6 +19,17 @@ int *readFile(string fileName, int &size)
     return arr;
 }
 
+void writeFile(string fileName, int *arr, int n)
+{
+    ofstream ofs(fileName);
+    ofs << n << endl;
+    for(int i = 0; i < n; i++)
+    {
+        ofs << arr[i] << " ";
+    }
+    ofs.close();
+}
+
 void printOptions()
 {
     cout << "Command 1: [Execution file] -a [Algorithm] [Given input] [Output parameters(s)]" << endl;
