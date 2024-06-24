@@ -53,7 +53,8 @@ void selectionSortFindRunTime(int *&arr, int n, long long &time) // you can use 
 }
 
 // counting comparisons
-void selectionSortCountComparison(int *&arr, int n, long long &cnt_cmp){
+void selectionSortCountComparison(int *&arr, int n, long long &cnt_cmp)
+{
 	cnt_cmp = 0;
 
 	int min_idx;
