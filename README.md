@@ -15,16 +15,11 @@ Format:
 
 Runtime function structure:
 
-auto start = chrono::system_clock::now();
+clock_t begin = clock();
 
 ....
-
 ....
 
-auto end = chrono::system_clock::now();
 
-// Calculate the duration
-
-auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-
-run_time = duration.count();
+clock_t end = clock();
+time = (long long)(end - begin);
