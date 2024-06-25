@@ -1,4 +1,4 @@
-
+#include "header.h"
 
 void mergeWithComparisonCount(int*& arr, int left, int mid, int right, long long& count_comparison) {
     int const subArrayOne = mid - left + 1;
