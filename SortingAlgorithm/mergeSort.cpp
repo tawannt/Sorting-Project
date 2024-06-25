@@ -1,37 +1,37 @@
 #include "../header.h"
+#include <ctime>
 
-
-void merge(int*& array, int const left, int const mid, int const right, long long& count_comparison) {
+void merge(int*& arr, int const left, int const mid, int const right, long long& count_comparison) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
     for (int i = 0; ++count_comparison && i < subArrayOne; i++)
-        leftArray[i] = array[left + i];
+        leftArray[i] = arr[left + i];
     for (int j = 0; ++count_comparison && j < subArrayTwo; j++)
-        rightArray[j] = array[mid + 1 + j];
+        rightArray[j] = arr[mid + 1 + j];
 
     int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
     int indexOfMergedArray = left;
 
     while (++count_comparison && indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
         if (++count_comparison && leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
-            array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+            arr[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
             indexOfSubArrayOne++;
         } else {
-            array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+            arr[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
             indexOfSubArrayTwo++;
         }
         indexOfMergedArray++;
     }
 
     while (++count_comparison && indexOfSubArrayOne < subArrayOne) {
-        array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+        arr[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
         indexOfSubArrayOne++;
         indexOfMergedArray++;
     }
     while (++count_comparison && indexOfSubArrayTwo < subArrayTwo) {
-        array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+        arr[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
         indexOfSubArrayTwo++;
         indexOfMergedArray++;
     }
@@ -40,47 +40,47 @@ void merge(int*& array, int const left, int const mid, int const right, long lon
     delete[] rightArray;
 }
 
-void mergeSortCountComparisons(int*& array, int const begin, int const end, long long& count_comparison) {
+void mergeSortCountComparisons(int*& arr, int const begin, int const end, long long& count_comparison) {
     if (++count_comparison && begin >= end)
         return;
     int mid = begin + (end - begin) / 2;
-    mergeSortCountComparisons(array, begin, mid, count_comparison);
-    mergeSortCountComparisons(array, mid + 1, end, count_comparison);
-    merge(array, begin, mid, end, count_comparison);
+    mergeSortCountComparisons(arr, begin, mid, count_comparison);
+    mergeSortCountComparisons(arr, mid + 1, end, count_comparison);
+    merge(arr, begin, mid, end, count_comparison);
 }
 
-void merge(int*& array, int const left, int const mid, int const right) {
+void merge(int*& arr, int const left, int const mid, int const right) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
     for (int i = 0; i < subArrayOne; i++)
-        leftArray[i] = array[left + i];
+        leftArray[i] = arr[left + i];
     for (int j = 0; j < subArrayTwo; j++)
-        rightArray[j] = array[mid + 1 + j];
+        rightArray[j] = arr[mid + 1 + j];
 
     int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
     int indexOfMergedArray = left;
 
     while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
         if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
-            array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+            arr[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
             indexOfSubArrayOne++;
         } else {
-            array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+            arr[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
             indexOfSubArrayTwo++;
         }
         indexOfMergedArray++;
     }
 
     while (indexOfSubArrayOne < subArrayOne) {
-        array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+        arr[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
         indexOfSubArrayOne++;
         indexOfMergedArray++;
     }
 
     while (indexOfSubArrayTwo < subArrayTwo) {
-        array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+        arr[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
         indexOfSubArrayTwo++;
         indexOfMergedArray++;
     }
@@ -89,7 +89,7 @@ void merge(int*& array, int const left, int const mid, int const right) {
     delete[] rightArray;
 }
 
-void mergeSortFindRunTime(int*& array, int const begin, int const end, long long& run_time) {
+void mergeSortFindRunTime(int*& arr, int const begin, int const end, long long& run_time) {
     clock_t start = clock();
     if (begin >= end) {
         run_time = (long long)((clock() - start) * 1000 / CLOCKS_PER_SEC);
@@ -97,12 +97,13 @@ void mergeSortFindRunTime(int*& array, int const begin, int const end, long long
     }
 
     int mid = begin + (end - begin) / 2;
-    mergeSortFindRunTime(array, begin, mid, run_time);
-    mergeSortFindRunTime(array, mid + 1, end, run_time);
-    merge(array, begin, mid, end);
+    mergeSortFindRunTime(arr, begin, mid, run_time);
+    mergeSortFindRunTime(arr, mid + 1, end, run_time);
+    merge(arr, begin, mid, end);
 
     run_time = (long long)((clock() - start) * 1000 / CLOCKS_PER_SEC);
 }
+
 
 
 /*
