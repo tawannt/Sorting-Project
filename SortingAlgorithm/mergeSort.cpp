@@ -40,6 +40,7 @@ void merge(int*& arr, int const left, int const mid, int const right, long long&
     delete[] rightArray;
 }
 
+//  ham nay cung can coi lai nhu ham findruntime nha doi lai tham so dau vao int *&, int , long long& nha
 void mergeSortCountComparisons(int*& arr, int const begin, int const end, long long& count_comparison) {
     if (++count_comparison && begin >= end)
         return;
@@ -49,6 +50,8 @@ void mergeSortCountComparisons(int*& arr, int const begin, int const end, long l
     merge(arr, begin, mid, end, count_comparison);
 }
 
+
+// khuc nay o dat ten ham trung voi ham o dong 4 lun, nguy hiem qua
 void merge(int*& arr, int const left, int const mid, int const right) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
@@ -89,6 +92,8 @@ void merge(int*& arr, int const left, int const mid, int const right) {
     delete[] rightArray;
 }
 
+// ko dung ham nay duoc nha o, o chinh lai mergeSortFindRunTime(int *&a, int n, long long &run_time) thi moi dung format dc nha
+// suggest la o viet 1 ham merge binh thuong, xong trong ham find run time thi o cho no chan o dau o cuoi thoi, xem thu quickSort nha
 void mergeSortFindRunTime(int*& arr, int const begin, int const end, long long& run_time) {
     clock_t start = clock();
     if (begin >= end) {
@@ -101,6 +106,7 @@ void mergeSortFindRunTime(int*& arr, int const begin, int const end, long long& 
     mergeSortFindRunTime(arr, mid + 1, end, run_time);
     merge(arr, begin, mid, end);
 
+    
     run_time = (long long)((clock() - start) * 1000 / CLOCKS_PER_SEC);
 }
 

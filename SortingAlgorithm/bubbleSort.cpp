@@ -11,6 +11,7 @@ void swap(int &xp, int &yp)
 // count comparisions
 void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions)
 {
+    // forget to firstly assign count_comparisons = 0;
     int i, j;
     bool swapped;
     for (i = 0; ++count_comparisions && i < n - 1; i++) {

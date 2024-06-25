@@ -205,7 +205,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         cout << "Input file: " <<  filenameInput << '\n';
         cout << "Input size: " << size << '\n'; 
         cout << "----------------------------\n";
-        cout << "Running time: " << time_1 << " | " << time_2 << '\n';
+        cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
         cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
 
         delete[] arr;

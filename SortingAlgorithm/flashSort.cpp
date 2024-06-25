@@ -5,6 +5,7 @@
 
 void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
 {
+    // forget to firstly assign count_comparisons = 0
     if (++count_comparison && n <= 1) return;
 
     int min_val = arr[0], max_val = arr[0];

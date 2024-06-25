@@ -43,5 +43,5 @@ void insertionSortFindRunTime(int *&arr, int n, long long &run_time)
         arr[prev + 1] = key;
     }
     clock_t end = clock();
-    run_time = (long long)(end - begin) / CLOCKS_PER_SEC * 1000;
+    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
 }
