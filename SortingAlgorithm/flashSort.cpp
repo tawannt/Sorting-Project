@@ -1,11 +1,10 @@
 #include "../header.h"
 
 
-
-
 void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
 {
-    // forget to firstly assign count_comparisons = 0
+    count_comparison = 0;
+    
     if (++count_comparison && n <= 1) return;
 
     int min_val = arr[0], max_val = arr[0];
@@ -59,6 +58,7 @@ void flashSortCountComparisons(int*& arr, int n, long long& count_comparison)
 
 void flashSortFindRunTime(int*& arr, int n, long long& run_time) 
 {
+    // Start the clock
     clock_t start = clock();
 
     if (n <= 1) return;
@@ -110,9 +110,11 @@ void flashSortFindRunTime(int*& arr, int n, long long& run_time)
         arr[j + 1] = key;
     }
 
+    // Stop the clock and calculate the runtime
     clock_t end = clock();
     run_time = (long long)((end - start) * 1000 / CLOCKS_PER_SEC);
 }
+
 
 
 /*
@@ -165,8 +167,8 @@ SUMMARY:
 
 OPTIMIZED:
     To optimize Flash Sort, focus on:
-    - Designing an efficient distribution function that minimizes the spread of values among buckets.
     - Implementing an efficient sorting algorithm (like Insertion Sort) for sorting small buckets.
+    - Designing an efficient distribution function that minimizes the spread of values among buckets.
     - Adjusting the number of buckets based on the distribution of elements to balance sorting efficiency and memory usage.
 */
 
