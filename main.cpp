@@ -56,7 +56,7 @@ int main(int argc, const char *argv[])
                 //cmd 5
                 algorithmName_1 = argv[2];
                 algorithmName_2 = argv[3];
-                size = stoi(argv[4]);
+                size = atoi(argv[4]);
                 inputOrder = argv[5];
                 command_5(algorithmName_1, algorithmName_2, size, inputOrder);
             }

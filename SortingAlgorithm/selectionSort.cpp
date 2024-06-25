@@ -1,33 +1,12 @@
 #include "../header.h"
 
-// basic Selection Sort
-void selectionSort(int* arr, int n) // I do not know why when declared selectionSort(int *&arr, int n) does not work ???
-{
-	// selection sort algorithm: swap the cur to the min, so begin find min from cur + 1 to n, if minIdx != cur => swap them
-	int i, j, min_idx; 
-	for(i = 0; i < n - 1; i++) // i just need to go to arr[n - 2] because if i go to a[n - 1] it means there's only 1 element left so it's also min
-	{
-		min_idx = i;
-		for(j = i + 1; j < n; j++)
-		{
-			if(arr[j] < arr[min_idx]) min_idx = j; // find minIdx
-		}
-		if(min_idx != i)
-		{
-			int tmp = arr[min_idx];
-			arr[min_idx] = arr[i];
-			arr[i] = tmp;
-		}
-	}
-
-}
 // run Time  
 void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use reference int *&arr or just int *arr both of them work
 {
 	// start time
  	auto start = chrono::steady_clock::now();
 	
-	int i, j, min_idx; 
+	long long i, j, min_idx; 
 	for(i = 0; i < n - 1; i++)
 	{
 		min_idx = i;
@@ -53,7 +32,7 @@ void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
 	cnt_cmp = 0;
 
-	int min_idx;
+	long long min_idx, i, j;
 	for (int i = 0; ++cnt_cmp && i < n-1; i++)
     {
         min_idx = i;
@@ -133,8 +112,8 @@ OPTIMIZED SELECTION SORT
 	time by up to 50%.
 
 REFERENCES :
-	+ Basic Selection Sort is done by myself.
 	+ Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi.
+But it does not work so we use chrono.
 	+ Chat-GPT: https://chatgpt.com/share/57ef8d49-88f2-40d2-b7ff-8926567aa79f
 	+ Slide of teacher Ngo Minh Nhut.
 	+ Geeks for geeks: https://www.geeksforgeeks.org/time-and-space-complexity-analysis-of-selection-sort/?ref=lbp

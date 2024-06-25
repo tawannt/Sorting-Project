@@ -2,7 +2,7 @@
 
 void quickSort(int *arr, int left, int right)
 {
-    long long  pi = left + (right - left) / 2; // to avoid overflow
+    int  pi = left + (right - left) / 2; // to avoid overflow
     int pivot = arr[pi];
     int i = left;
     int j = right;
@@ -35,7 +35,7 @@ void quickSortFindRunTime(int *&arr, int n, long long &time)
 
 void quickSortCounting(int *&arr, int left, int right, long long &count)
 {
-   long long  pi = left + (right - left) / 2; // to avoid overflow
+    int pi = left + (right - left) / 2; // to avoid overflow
     int pivot = arr[pi];
     int i = left;
     int j = right;

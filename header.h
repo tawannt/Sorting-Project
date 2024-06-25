@@ -55,7 +55,7 @@ void countSortCompare(int* &arr, int n, int exp, long long &cnt_cmp);
 void radixSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 void radixSortFindRunTime(int* &arr, int n, long long &time);
 
-void selectionSort(int* arr, int n);
+
 void selectionSortFindRunTime(int* &arr, int n, long long &time);
 void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 
