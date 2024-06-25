@@ -1,6 +1,10 @@
 #include "../header.h"
+#include <vector>
+#include <ctime>
+using namespace std;
 
-void flashSortCountComparisons(int arr[], int n, long long& count_comparison) 
+// Hàm đếm số lần so sánh khi sắp xếp Flash Sort
+void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
 {
     if (++count_comparison && n <= 1) return;
 
@@ -52,9 +56,10 @@ void flashSortCountComparisons(int arr[], int n, long long& count_comparison)
     }
 }
 
-void flashSortFindRunTime(int arr[], int n, long long& run_time) 
+// Hàm đo thời gian thực thi khi sắp xếp Flash Sort
+void flashSortFindRunTime(int*& arr, int n, long long& run_time) 
 {
-    clock_t begin = clock();
+    clock_t start = clock();
 
     if (n <= 1) return;
 
@@ -106,8 +111,9 @@ void flashSortFindRunTime(int arr[], int n, long long& run_time)
     }
 
     clock_t end = clock();
-    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    run_time = (long long)((end - start) * 1000 / CLOCKS_PER_SEC);
 }
+
 
 /*
 Reference: 
