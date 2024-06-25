@@ -129,7 +129,7 @@ void Generate(string inputOrder, int *&arr, int inputSize)
     }
 }
 
-void Do(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(int *&, int, long long &), int *&arr, int size, string outputParameter, long long &time, long long &count_comparison)
+void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(int *&, int, long long &), int *&arr, int size, string outputParameter, long long &time, long long &count_comparison)
 {
     if (outputParameter == "-time")
     {
@@ -176,7 +176,7 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
     if(findRunTime != NULL && countComparisons != NULL)
     {
         long long cnt_cmp = 0, time = 0;
-        Do(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
         // 3 cai if el
     }
     else 
@@ -209,7 +209,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         selectAlgorithm(findRunTime, countComparisons, algorithmName_1);
         if(findRunTime && countComparisons) // if algorithmName_1 is in set
         {
-            Do(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
+            doForOutputParameter(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
             delete[] arr;
         }
         else
@@ -228,7 +228,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         selectAlgorithm(findRunTime, countComparisons, algorithmName_2);
         if(findRunTime && countComparisons)
         {
-            Do(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
+            doForOutputParameter(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
             delete[] arr_2;
         }
         else
@@ -273,7 +273,7 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
     
     if(findRunTime && countComparisons)
     {
-        Do(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
         delete[] arr;
     }
     else
@@ -292,7 +292,7 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
 
     if(findRunTime && countComparisons)
     {
-        Do(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
+        doForOutputParameter(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
         delete[] arr_2;
     }
     else
