@@ -13,7 +13,8 @@ void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long
     int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
     int indexOfMergedArray = left;
 
-    while (++count_comparison && indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
+    
+    while (++count_comparison && indexOfSubArrayOne < subArrayOne && ++count_comparison && indexOfSubArrayTwo < subArrayTwo) {
         if (++count_comparison && leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
             arr[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
             indexOfSubArrayOne++;
@@ -40,8 +41,8 @@ void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long
 }
 
 
-void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison) {
-    if (n <= 1)
+void mergeSortHelpCountComparisons(int* &arr, int n, long long &count_comparison) {
+    if (++count_comparison && n <= 1)
         return;
 
     int mid = n / 2;
@@ -61,6 +62,12 @@ void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison) {
     delete[] rightArray;
 }
 
+
+void mergeSortCountComparisons(int *&arr, int n, long long &count_comparisons)
+{
+    count_comparisons = 0;
+    mergeSortHelpCountComparisons(arr, n, count_comparisons);
+}
 
 void mergeArrays(int* &arr, int left, int mid, int right) {
     int const subArrayOne = mid - left + 1;
@@ -103,32 +110,25 @@ void mergeArrays(int* &arr, int left, int mid, int right) {
 }
 
 
-void mergeSortFindRunTime(int* &arr, int n, long long &run_time) {
-    if (n <= 1) {
-        return;
+void mergeSort(int *&arr, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        mergeArrays(arr, left, mid, right);
+
     }
-
-    clock_t start = clock();
-
-    int mid = n / 2;
-    int* leftArray = new int[mid];
-    int* rightArray = new int[n - mid];
-
-    for (int i = 0; i < mid; i++)
-        leftArray[i] = arr[i];
-    for (int i = 0; i < (n - mid); i++)
-        rightArray[i] = arr[mid + i];
-
-    mergeSortFindRunTime(leftArray, mid, run_time);
-    mergeSortFindRunTime(rightArray, n - mid, run_time);
-    mergeArrays(arr, 0, mid - 1, n - 1);
-
-    delete[] leftArray;
-    delete[] rightArray;
-
-    run_time = (long long)((clock() - start) * 1000 / CLOCKS_PER_SEC);
 }
 
+
+void mergeSortFindRunTime(int* &arr, int n, long long &run_time) {
+    clock_t start = clock();
+    mergeSort(arr, 0, n - 1);
+    clock_t end = clock();
+    run_time = (long long)((end - start) / CLOCKS_PER_SEC * 1000);
+}
 
 
 /*

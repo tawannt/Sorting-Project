@@ -10,7 +10,6 @@ void swap(int &xp, int &yp)
 
 void bubbleSort(int* &arr, int n)
 {
-    // forget to firstly assign count_comparisons = 0;
     int i, j;
     bool swapped;
     for (i = 0; i < n - 1; i++) {
@@ -28,21 +27,22 @@ void bubbleSort(int* &arr, int n)
 }
 
 // count comparisions
-void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions)
+void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisons)
 {
     // forget to firstly assign count_comparisons = 0;
+    count_comparisons = 0;
     int i, j;
     bool swapped;
-    for (i = 0; ++count_comparisions && i < n - 1; i++) {
+    for (i = 0; ++count_comparisons && i < n - 1; i++) {
         swapped = false;
-        for (j = 0; ++count_comparisions && j < n - i - 1; j++) {
-            if (++count_comparisions && arr[j] > arr[j + 1]) {
+        for (j = 0; ++count_comparisons && j < n - i - 1; j++) {
+            if (++count_comparisons && arr[j] > arr[j + 1]) {
                 swap(arr[j], arr[j + 1]);
                 swapped = true;
             }
         }
 
-        if (++count_comparisions && swapped == false)
+        if (++count_comparisons && swapped == false)
             break;
     }
 }
@@ -82,7 +82,9 @@ algorithm description:
     + ChatGPT.
 
 IDEAS:
-    The Bubble Sort algorithm iteratively steps over the list, compares nearby members, and swaps them if they are out of order. Until the list is sorted, these steps are repeated. In the event that the list is sorted before all iterations are finished, an optimisation is built in to stop the algorithm.
+    The Bubble Sort algorithm iteratively steps over the list, compares nearby members, and swaps them if they are out of order. 
+    Until the list is sorted, these steps are repeated. 
+    In the event that the list is sorted before all iterations are finished, an optimisation is built in to stop the algorithm.
 
 STEP BY STEP DESCRIPTION:
     1. Initialize a variable 'i' for running a loop over the entire list or array
@@ -99,11 +101,14 @@ Let n be the number of elements in the array.
 
 1/ Time complexity analysis: 
    + Mathematics proof: 
-        In each iteration of the outer loop, the largest unsorted element "bubbles up" to its correct position. In the worst case, the algorithm performs a total of 'n * (n - 1) / 2' comparisons.
+        In each iteration of the outer loop, the largest unsorted element "bubbles up" to its correct position. 
+        In the worst case, the algorithm performs a total of 'n * (n - 1) / 2' comparisons.
    + Best case: O(n)
-        The best case occurs when the array is already sorted. The algorithm will only make one pass through the array, performing n-1 comparisons and detecting that no swaps are needed.
+        The best case occurs when the array is already sorted. 
+        The algorithm will only make one pass through the array, performing n-1 comparisons and detecting that no swaps are needed.
    + Worst case: O(n^2)
-        The worst case occurs when the array is sorted in reverse order. The algorithm will perform the maximum number of comparisons and swaps.
+        The worst case occurs when the array is sorted in reverse order. 
+        The algorithm will perform the maximum number of comparisons and swaps.
    + Average case: O(n^2)
         On average, the algorithm will performs quadratic time complexity due to the nested loops.
 

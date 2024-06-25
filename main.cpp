@@ -10,13 +10,15 @@ bool isNum(string str){
     return true;
 }
 
-int main(int argc, char** argv)
+int main(int argc, const char *argv[])
 {
     if (argc != 5 && argc != 6){
+        printOptions();
         return 0;
     } else {
+
         string mode = argv[1];
-        if (mode == "a"){
+        if (mode == "-a"){
             if (argc == 5){
                 if (!isNum(argv[3])){ //cmd 1:
 

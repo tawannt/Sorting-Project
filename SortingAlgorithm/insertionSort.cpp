@@ -14,14 +14,14 @@ void insertionSort(int* &arr, int n)
     }
 }
 
-void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisions) // comparisons not comparisions 
+void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisons) // comparisons not comparisions 
 {
-    count_comparisions = 0;
+    count_comparisons = 0;
     int key, prev;
-    for (int cur = 1; cur < n && ++count_comparisions; cur++) {
+    for (int cur = 1; cur < n && ++count_comparisons; cur++) {
         key = arr[cur];
         prev = cur - 1;
-        while (prev >= 0 && ++count_comparisions && arr[prev] > key && ++count_comparisions) {
+        while (++count_comparisons && arr[prev] > key && ++count_comparisons && arr[prev] > key) {
             arr[prev + 1] = arr[prev];
             prev--;
         }

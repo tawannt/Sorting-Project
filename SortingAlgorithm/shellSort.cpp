@@ -28,7 +28,7 @@ void shellSort(int* &arr, int n)
 }
 
 //count comparisions
-void shellSortCountComparisions(int* &arr, int n, long long& count_comparisions)
+void shellSortCountComparisons(int* &arr, int n, long long& count_comparisions)
 {
     // forget to assign count_comparisons = 0;
     for (int gap = n / 2; ++count_comparisions && gap > 0; gap /= 2)

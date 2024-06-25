@@ -129,14 +129,14 @@ void Generate(string inputOrder, int *&arr, int inputSize)
     }
 }
 
-void Do(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(int *&, int, long long &), int *&arr, int size, string output_parameter, long long &time, long long &count_comparison)
+void Do(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(int *&, int, long long &), int *&arr, int size, string outputParameter, long long &time, long long &count_comparison)
 {
-    if (output_parameter == "-time")
+    if (outputParameter == "-time")
     {
         // Runtime
         findRunTime(arr, size, time);
     }
-    else if (output_parameter == "-both")
+    else if (outputParameter == "-both")
     {
         // Runtime
         int *temp = new int[size];
@@ -150,10 +150,41 @@ void Do(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(
         countComparisons(temp, size, count_comparison);
         delete[] temp;
     }
-    else if (output_parameter == "-comp")
+    else if (outputParameter == "-comp")
     {
         countComparisons(arr, size, count_comparison);
     }
+}
+
+void command_2(string algorithmName, int size, string inputOrder, string outputPara)
+{
+    // generate automatically
+    int *arr = new int [size];
+    Generate(inputOrder, arr, size);
+
+    // write file
+    writeFile("input.txt", arr, size);
+
+    // run algorithm
+    // firstly selectAlgorithm
+    void (*findRunTime)(int *&, int, long long &) = NULL; // initialize pointer function
+    void (*countComparisons)(int *&, int, long long &) = NULL;
+
+    selectAlgorithm(findRunTime, countComparisons, algorithmName);
+
+    if(findRunTime != NULL && countComparisons != NULL)
+    {
+        long long cnt_cmp = 0, time = 0;
+        Do(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        // 3 cai if el
+    }
+    else 
+    {
+        //  bao loi 
+    }
+
+
+    delete[] arr;
 }
 
 void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size)
@@ -183,7 +214,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
             return;
         }
 
-        //  do for algorithm 2
+        // do for algorithm 2
         // reinitialize pointer function as NULL
         findRunTime = NULL;
         countComparisons = NULL;

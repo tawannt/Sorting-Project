@@ -11,7 +11,7 @@
 using namespace std;
 
 void bubbleSort(int* &arr, int n);
-void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions);
+void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisons);
 void bubbleSortFindRunTime(int *&arr, int n, long long &time);
 
 void countingSort(int* &arr, int n);
@@ -28,10 +28,14 @@ void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons);
 void heapSortFindRunTime(int* &arr, int n, long long &run_time);
 
 void insertionSort(int* &arr, int n);
-void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisions);
+void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisons);
 void insertionSortFindRunTime(int* &arr, int n, long long &run_time);
 
+
+
+void mergeSort(int *&arr, int left, int right);
 void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison);
+void mergeSortHelpCountComparisons(int* &arr, int n, long long &count_comparison);
 void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);
 void mergeArrays(int* &arr, int left, int mid, int right);
 void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
@@ -59,6 +63,6 @@ void shakerSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 void shakerSortFindRunTime(int* &arr, int n, long long &time);
 
 void shellSort(int* &arr, int n);
-void shellSortCountComparisions(int* &arr, int n, long long& count_comparisions);
+void shellSortCountComparisons(int* &arr, int n, long long& count_comparisons);
 void shellSortFindRunTime(int* &arr, int n, long long& run_time);
 #endif
