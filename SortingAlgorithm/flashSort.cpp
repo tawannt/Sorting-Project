@@ -1,6 +1,6 @@
 #include "../header.h"
 
-using namespace std;
+
 
 
 void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
