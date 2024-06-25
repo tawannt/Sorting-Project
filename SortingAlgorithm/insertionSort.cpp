@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../header.h"
 
 void insertionSort(int* &arr, int n)
 {

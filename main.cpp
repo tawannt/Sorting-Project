@@ -1,5 +1,16 @@
 #include "header.h"
-#include "cmd.h"
+#include "SortingAlgorithm/bubbleSort.cpp"
+#include "SortingAlgorithm/countingSort.cpp"
+#include "SortingAlgorithm/flashSort.cpp"
+#include "SortingAlgorithm/heapSort.cpp"
+#include "SortingAlgorithm/insertionSort.cpp"
+#include "SortingAlgorithm/mergeSort.cpp"
+#include "SortingAlgorithm/quickSort.cpp"
+#include "SortingAlgorithm/radixSort.cpp"
+#include "SortingAlgorithm/selectionSort.cpp"
+#include "SortingAlgorithm/shakerSort.cpp"
+#include "SortingAlgorithm/shellSort.cpp"
+#include "commandLine.cpp"
 
 bool isNum(string str){
     for (int i = 0; i < str.length(); i++){

@@ -1,4 +1,4 @@
-#include "./header.h"
+#include "../header.h"
 
 // subfunction
 void swap(int &xp, int &yp) 

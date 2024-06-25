@@ -25,13 +25,7 @@ int *readFile(string fileName, int &size)
 
 void writeFile(string fileName, int *arr, int size)
 {
-    fileName = "data/" + fileName;
     ofstream ofs(fileName);
-    if(!ofs.is_open())
-    {
-        cout << "Cannot open input file!!!\n";
-        return;
-    }
     ofs << size << endl;
     for(int i = 0; i < size; i++)
     {
@@ -138,7 +132,7 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
     }
     else if (outputParameter == "-both")
     {
-        // Runtime
+        // Run time
         // need temp arr because after run function the array will be sort, so to ensure that before countComparison we need to reset temp arr.
         int *temp = new int[size];
         for (int i = 0; i < size; i++)
@@ -267,10 +261,9 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
     void (*countComparisons)(int *&, int, long long &) = NULL;
 
     // initialize time 1 2 and cnt 1 2
-    long long time_1 = 0, time_2 = 0, cnt_1 = 0, cnt_2 = 0;
+    long long time_1 = -1, time_2 = -1, cnt_1 = 0, cnt_2 = 0;
     // do for algorithm 1
     selectAlgorithm(findRunTime, countComparisons, algorithmName_1);
-    
     if(findRunTime && countComparisons)
     {
         doForOutputParameter(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
@@ -301,11 +294,17 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
         delete[] arr_2;
     }
 
-    // cout 
+    // cout
+    string tmp;
+    if(inputOrder == "-rand") tmp = "randomized data";
+    if(inputOrder == "-nsorted") tmp = "nearly sorted data";
+    if(inputOrder == "-sorted") tmp = "sorted data";
+    if(inputOrder == "-rev") tmp = "reverse sorted data";
+
     cout << "COMPARE MODE\n";
     cout << "Algorithm: " << algorithmName_1 << " | " << algorithmName_2 << '\n';
     cout << "Input size: " << size << '\n';
-    cout << "Input order: " << inputOrder << '\n';
+    cout << "Input order: " << tmp << '\n';
     cout << "----------------------------\n";
     cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
     cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
