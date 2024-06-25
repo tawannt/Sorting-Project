@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// Hàm đếm số lần so sánh khi sắp xếp Flash Sort
+
 void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
 {
     if (++count_comparison && n <= 1) return;
@@ -55,7 +55,7 @@ void flashSortCountComparisons(int*& arr, int n, long long& count_comparison)
     }
 }
 
-// Hàm đo thời gian thực thi khi sắp xếp Flash Sort
+
 void flashSortFindRunTime(int*& arr, int n, long long& run_time) 
 {
     clock_t start = clock();
