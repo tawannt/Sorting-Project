@@ -1,7 +1,7 @@
 #include "../header.h"
 
 // basic Selection Sort
-void selectionSort(int *&arr, int n)
+void selectionSort(int* &arr, int n)
 {
 	// selection sort algorithm: swap the cur to the min, so begin find min from cur + 1 to n, if minIdx != cur => swap them
 	int i, j, min_idx; 
@@ -22,7 +22,7 @@ void selectionSort(int *&arr, int n)
 
 }
 // run Time  
-void selectionSortFindRunTime(int *&arr, int n, long long &time) // you can use reference int *&arr or just int *arr both of them work
+void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use reference int *&arr or just int *arr both of them work
 {
 	// start time
  	clock_t begin = clock();
@@ -51,7 +51,7 @@ void selectionSortFindRunTime(int *&arr, int n, long long &time) // you can use 
 }
 
 // counting comparisons
-void selectionSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
+void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
 	cnt_cmp = 0;
 

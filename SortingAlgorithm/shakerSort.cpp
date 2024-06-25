@@ -1,7 +1,7 @@
 #include "../header.h"
 
 // basic shaker_sort
-void shakerSort(int *&arr, int n)
+void shakerSort(int* &arr, int n)
 {
     bool swapped = true;
     int i = 0;
@@ -50,7 +50,7 @@ void shakerSort(int *&arr, int n)
 }
 
 // counting comparisons 
-void shakerSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
+void shakerSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     bool swapped = true;
@@ -93,7 +93,7 @@ void shakerSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 
 
 // run time
-void shakerSortFindRunTime(int *&arr, int n, long long &time)
+void shakerSortFindRunTime(int* &arr, int n, long long &time)
 {
     clock_t begin = clock();
     bool swapped = true;

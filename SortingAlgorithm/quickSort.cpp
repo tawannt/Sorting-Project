@@ -1,7 +1,7 @@
 #include "../header.h"
 
 // basic Quick Sort
-void quickSort(int *&arr, int left, int right) 
+void quickSort(int* &arr, int left, int right) 
 {
     int pivot = arr[(left + right) / 2];  // pivot selection mid
     int i = left;
@@ -27,7 +27,7 @@ void quickSort(int *&arr, int left, int right)
 }
 
 // counting comparisons 
-void quickSortHelpCount(int *&arr, int left, int right, long long &cnt)
+void quickSortHelpCount(int* &arr, int left, int right, long long &cnt)
 {
     int pivot = arr[(left + right) / 2];
     int i = left;
@@ -53,7 +53,7 @@ void quickSortHelpCount(int *&arr, int left, int right, long long &cnt)
     if(right > i) quickSortHelpCount(arr, i, right, cnt);
 }
 
-void quickSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
+void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     quickSortHelpCount(arr, 0, n - 1, cnt_cmp);

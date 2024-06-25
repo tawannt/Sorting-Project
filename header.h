@@ -36,27 +36,29 @@ void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);
 void mergeArrays(int* &arr, int left, int mid, int right);
 void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
 
-void quickSort(int *&arr, int left, int right);
+void quickSort(int* &arr, int left, int right);
+void quickSortHelpCount(int* &arr, int left, int right, long long &cnt);
+void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 void quickSortFindRunTime(int *&arr, int n, long long &time);
-void quickSortHelpCount(int *&arr, int left, int right, long long &cnt);
-void quickSortCountComparisons(int *&arr, int n, long long &cnt_cmp);
 
-int getMax(int *&arr, int n);
-void countSort(int *&arr, int n, int exp);
-void radixSort(int *&arr, int n);
-void radixSortCountComparisons(int *&arr, int n, long long &cnt_cmp);
-int getMaxCompare(int *&arr, int n, long long &cnt_cmp);
-void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp); 
-void radixSortFindRunTime(int *&arr, int n, long long &time);
+int getMax(int* &arr, int n);
+void countSort(int* &arr, int n, int exp);
 
-void selectionSort(int *&arr, int n);
-void selectionSortCountComparisons(int *&arr, int n, long long &cnt_cmp);
-void selectionSortFindRunTime(int *&arr, int n, long long &time);
+void radixSort(int* &arr, int n);
+int getMaxCompare(int* &arr, int n, long long &cnt_cmp);
+void countSortCompare(int* &arr, int n, int exp, long long &cnt_cmp);
+void radixSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
+void radixSortFindRunTime(int* &arr, int n, long long &time);
 
-void shakerSort(int *&arr, int n);
-void shakerSortCountComparisons(int *&arr, int n, long long &cnt_cmp); 
-void shakerSortFindRunTime(int *&arr, int n, long long &time);
+void selectionSort(int* &arr, int n);
+void selectionSortFindRunTime(int* &arr, int n, long long &time);
+void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 
-void shellSortCompare(int *&arr, int n, long long &count_comparisons);
-void shellSortRunTime(int *&arr, int n, long long &time);
+void shakerSort(int* &arr, int n);
+void shakerSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
+void shakerSortFindRunTime(int* &arr, int n, long long &time);
+
+void shellSort(int* &arr, int n);
+void shellSortCountComparisions(int* &arr, int n, long long& count_comparisions);
+void shellSortFindRunTime(int* &arr, int n, long long& run_time);
 #endif

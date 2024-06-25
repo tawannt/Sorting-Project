@@ -1,6 +1,6 @@
 #include "../header.h"
 
-int getMax(int *&arr, int n)
+int getMax(int* &arr, int n)
 {
     int max_val = arr[0];
 
@@ -11,7 +11,7 @@ int getMax(int *&arr, int n)
     return max_val;
 }
 
-void countSort(int *&arr, int n, int exp)
+void countSort(int* &arr, int n, int exp)
 {
     int *output = new int[n]; // Allocate memory for the output array dynamically
     int count_digit[10] = {0}; // Array to store count of occurrences of digits
@@ -37,7 +37,7 @@ void countSort(int *&arr, int n, int exp)
 
 
 // basic radix_sort
-void radixSort(int *&arr, int n)
+void radixSort(int* &arr, int n)
 {
     // Find the maximum number to know the number of digits
     int max_val = getMax(arr, n);
@@ -53,7 +53,7 @@ void radixSort(int *&arr, int n)
 
 
 // count comparisons 
-int getMaxCompare(int *&arr, int n, long long &cnt_cmp)
+int getMaxCompare(int* &arr, int n, long long &cnt_cmp)
 {
     int max_val = arr[0];
     
@@ -64,7 +64,7 @@ int getMaxCompare(int *&arr, int n, long long &cnt_cmp)
     return max_val;
 }
 
-void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp)
+void countSortCompare(int* &arr, int n, int exp, long long &cnt_cmp)
 {
     int *output = new int [n];
     int count_digit[10] = {0};
@@ -84,7 +84,7 @@ void countSortCompare(int *&arr, int n, int exp, long long &cnt_cmp)
     delete[] output;
 }
 
-void radixSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
+void radixSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
     cnt_cmp = 0;
     int max_val = getMaxCompare(arr, n, cnt_cmp);
@@ -97,7 +97,7 @@ void radixSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 
 
 // count run time
-void radixSortFindRunTime(int *&arr, int n, long long &time)
+void radixSortFindRunTime(int* &arr, int n, long long &time)
 {
     clock_t begin = clock();
 
