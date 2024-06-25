@@ -1,5 +1,5 @@
 #include "../header.h"
-#include <ctime>
+
 
 void merge(int*& arr, int const left, int const mid, int const right, long long& count_comparison) {
     int const subArrayOne = mid - left + 1;
