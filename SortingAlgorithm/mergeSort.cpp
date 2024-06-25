@@ -1,17 +1,17 @@
 #include "../header.h"
 
 
-void merge(int array[], int const left, int const mid, int const right, long long& count_comparison) {
+void merge(int*& array, int const left, int const mid, int const right, long long& count_comparison) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
-    for (auto i = 0; ++count_comparison && i < subArrayOne; i++)
+    for (int i = 0; ++count_comparison && i < subArrayOne; i++)
         leftArray[i] = array[left + i];
-    for (auto j = 0; ++count_comparison && j < subArrayTwo; j++)
+    for (int j = 0; ++count_comparison && j < subArrayTwo; j++)
         rightArray[j] = array[mid + 1 + j];
 
-    auto indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
+    int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
     int indexOfMergedArray = left;
 
     while (++count_comparison && indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
@@ -40,7 +40,6 @@ void merge(int array[], int const left, int const mid, int const right, long lon
     delete[] rightArray;
 }
 
-
 void mergeSortCountComparisons(int*& array, int const begin, int const end, long long& count_comparison) {
     if (++count_comparison && begin >= end)
         return;
@@ -50,18 +49,17 @@ void mergeSortCountComparisons(int*& array, int const begin, int const end, long
     merge(array, begin, mid, end, count_comparison);
 }
 
-
-void merge(int array[], int const left, int const mid, int const right) {
+void merge(int*& array, int const left, int const mid, int const right) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
-    for (auto i = 0; i < subArrayOne; i++)
+    for (int i = 0; i < subArrayOne; i++)
         leftArray[i] = array[left + i];
-    for (auto j = 0; j < subArrayTwo; j++)
+    for (int j = 0; j < subArrayTwo; j++)
         rightArray[j] = array[mid + 1 + j];
 
-    auto indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
+    int indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
     int indexOfMergedArray = left;
 
     while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
@@ -105,6 +103,7 @@ void mergeSortFindRunTime(int*& array, int const begin, int const end, long long
 
     run_time = (long long)((clock() - start) * 1000 / CLOCKS_PER_SEC);
 }
+
 
 /*
 Reference:
