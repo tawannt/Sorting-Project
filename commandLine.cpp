@@ -139,13 +139,14 @@ void Do(void (*findRunTime)(int *&, int, long long &), void (*countComparisons)(
     else if (outputParameter == "-both")
     {
         // Runtime
+        // need temp arr because after run function the array will be sort, so to ensure that before countComparison we need to reset temp arr.
         int *temp = new int[size];
         for (int i = 0; i < size; i++)
             temp[i] = arr[i];
 
         findRunTime(temp, size, time);
         // Compare
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) //  reset
             temp[i] = arr[i];
         countComparisons(temp, size, count_comparison);
         delete[] temp;
@@ -189,6 +190,7 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
 
 void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size)
 {
+    // we need 2 the same arr like in Do function
     int *arr = readFile(filenameInput, size);
     int *arr_2 = new int [size];
     for(int i = 0; i < size; i++) arr_2[i] = arr[i];
@@ -208,6 +210,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         if(findRunTime && countComparisons) // if algorithmName_1 is in set
         {
             Do(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
+            delete[] arr;
         }
         else
         {
@@ -225,12 +228,13 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         selectAlgorithm(findRunTime, countComparisons, algorithmName_2);
         if(findRunTime && countComparisons)
         {
-            Do(findRunTime, countComparisons, arr, size, "-both", time_2, cnt_2);
+            Do(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
+            delete[] arr_2;
         }
         else
         {
             cout << algorithmName_2 << " is not in set!!!\n";
-            delete[] arr;
+            delete[] arr_2;
             return;
         }
 
@@ -241,8 +245,6 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         cout << "----------------------------\n";
         cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
         cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
-
-        delete[] arr;
     }
     else cout << "ERROR READING ARRAY FILE!!!\n";
 }
@@ -253,6 +255,10 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
     int *arr = new int[size];
     Generate(inputOrder, arr, size);
 
+    // we need 2 the same arr like command_4
+    int *arr_2 = new int [size];
+    for(int i = 0; i < size; i++) arr_2[i] = arr[i];
+
     // write file
     writeFile("input.txt", arr, size);
 
@@ -260,23 +266,47 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
     void (*findRunTime)(int *&, int, long long &) = NULL;
     void (*countComparisons)(int *&, int, long long &) = NULL;
 
+    // initialize time 1 2 and cnt 1 2
+    long long time_1 = 0, time_2 = 0, cnt_1 = 0, cnt_2 = 0;
     // do for algorithm 1
     selectAlgorithm(findRunTime, countComparisons, algorithmName_1);
     
     if(findRunTime && countComparisons)
     {
-        long long time_1 = 0, cnt_1 = 0;
         Do(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
+        delete[] arr;
     }
     else
     {
         cout << algorithmName_1 << " is not in set!!!\n";
         delete[] arr;
+        delete[] arr_2;
         return;
     }
 
-    // do for algorithm 2
-    findRunTime = NULL
+    // do for algorithm 2, do not need to delete function pointer
+    findRunTime = NULL;
+    countComparisons = NULL;
 
-    delete[] arr;
+    selectAlgorithm(findRunTime, countComparisons, algorithmName_2);
+
+    if(findRunTime && countComparisons)
+    {
+        Do(findRunTime, countComparisons, arr_2, size, "-both", time_2, cnt_2);
+        delete[] arr_2;
+    }
+    else
+    {
+        cout << algorithmName_2 << " is not in set!!!\n";
+        delete[] arr_2;
+    }
+
+    // cout 
+    cout << "COMPARE MODE\n";
+    cout << "Algorithm: " << algorithmName_1 << " | " << algorithmName_2 << '\n';
+    cout << "Input size: " << size << '\n';
+    cout << "Input order: " << inputOrder << '\n';
+    cout << "----------------------------\n";
+    cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
+    cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
 }
