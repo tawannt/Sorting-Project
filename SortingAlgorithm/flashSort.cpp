@@ -1,6 +1,5 @@
 #include "../header.h"
-#include <vector>
-#include <ctime>
+
 using namespace std;
 
 // Hàm đếm số lần so sánh khi sắp xếp Flash Sort
