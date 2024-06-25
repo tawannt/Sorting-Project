@@ -41,9 +41,9 @@ void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);
 void mergeArrays(int* &arr, int left, int mid, int right);
 void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
 
-void quickSort(int* &arr, int left, int right);
-void quickSortHelpCount(int* &arr, int left, int right, long long &cnt);
-void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
+void quickSort(int *arr, int left, int right);
+void quickSortCounting(int* &arr, int left, int right, long long &cnt);
+void quickSortCountComparisons(int* &arr, int n, long long &count_comparisons);
 void quickSortFindRunTime(int *&arr, int n, long long &time);
 
 int getMax(int* &arr, int n);
@@ -55,7 +55,7 @@ void countSortCompare(int* &arr, int n, int exp, long long &cnt_cmp);
 void radixSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 void radixSortFindRunTime(int* &arr, int n, long long &time);
 
-void selectionSort(int* &arr, int n);
+void selectionSort(int* arr, int n);
 void selectionSortFindRunTime(int* &arr, int n, long long &time);
 void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 

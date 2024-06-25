@@ -1,73 +1,74 @@
 #include "../header.h"
 
-// basic Quick Sort
-void quickSort(int* &arr, int left, int right) 
+void quickSort(int *arr, int left, int right)
 {
-    int pivot = arr[(left + right) / 2];  // pivot selection mid
+    long long  pi = left + (right - left) / 2; // to avoid overflow
+    int pivot = arr[pi];
     int i = left;
     int j = right;
-    
-    while (i <= j) // main partitioning loop
-    {  
-        while (arr[i] < pivot) i++; // move i right past smaller elements
-        while (arr[j] > pivot) j--; // move j left past larger elements
-        
-        if (i <= j) 
-        {  // swap elements if i and j haven't crossed
-            int temp = arr[i];
+    int temp;
+    while (i < j)
+    {
+        while (arr[i] < pivot) i++;
+
+        while (arr[j] > pivot) j--;
+        if (i <= j)
+        {
+            temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
             i++;
             j--;
         }
     }
-    
-    if (left < j) quickSort(arr, left, j); // recur for left partition
-    if (i < right) quickSort(arr, i, right);  // recur for right partition
+    if (i < right) quickSort(arr, i, right);
+    if (left < j) quickSort(arr, left, j);
 }
 
-// counting comparisons 
-void quickSortHelpCount(int* &arr, int left, int right, long long &cnt)
-{
-    int pivot = arr[(left + right) / 2];
-    int i = left;
-    int j = right;
-
-    while(++cnt && i <= j)
-    {
-        while(++cnt && arr[i] < pivot) i++;
-        while(++cnt && arr[j] > pivot) j++;
-
-        if(++cnt && i <= j)
-        {
-            int tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
-
-            i++;
-            j--;
-        }
-    }
-
-    if(left < j) quickSortHelpCount(arr, left, j, cnt);
-    if(right > i) quickSortHelpCount(arr, i, right, cnt);
-}
-
-void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
-{
-    cnt_cmp = 0;
-    quickSortHelpCount(arr, 0, n - 1, cnt_cmp);
-}
-
-
-// run time
 void quickSortFindRunTime(int *&arr, int n, long long &time)
 {
-   auto start = chrono::steady_clock::now();
+    auto start = chrono::steady_clock::now();
     quickSort(arr, 0, n - 1);
     auto end = chrono::steady_clock::now();
     time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
+
+void quickSortCounting(int *&arr, int left, int right, long long &count)
+{
+   long long  pi = left + (right - left) / 2; // to avoid overflow
+    int pivot = arr[pi];
+    int i = left;
+    int j = right;
+    int temp;
+    while (++count && i < j)
+    {
+        while (++count && arr[i] < pivot)
+        {
+            i++;
+        }
+        while (++count && arr[j] > pivot)
+        {
+            j--;
+        }
+        if (++count && i <= j)
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    if (++count && i < right) quickSortCounting(arr, i, right, count);
+    if (++count && left < j) quickSortCounting(arr, left, j, count);
+}
+
+void quickSortCountComparisons(int *&arr, int n, long long &count_comparisons)
+{
+    count_comparisons = 0;
+    quickSortCounting(arr, 0, n - 1, count_comparisons);
+}
+
 
 /* Note for report
 
@@ -119,8 +120,8 @@ OPTIMIZED:
 	- Hybrid approaches like using insertion sort for small sub-arrays to improve performance.
 
 REFERENCES :
-    + Basic Quick Sort is refer to my teammate.
-    + Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi.
+    + Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi. 
+But it does not work well so we must use chrono by chat-gpt suggest.
     + Chat-GPT: https://chatgpt.com/share/7264684e-a209-41af-bfe7-1643118ccf1b
 
 */

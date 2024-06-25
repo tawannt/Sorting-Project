@@ -1,7 +1,7 @@
 #include "../header.h"
 
 // basic Selection Sort
-void selectionSort(int* &arr, int n)
+void selectionSort(int* arr, int n) // I do not know why when declared selectionSort(int *&arr, int n) does not work ???
 {
 	// selection sort algorithm: swap the cur to the min, so begin find min from cur + 1 to n, if minIdx != cur => swap them
 	int i, j, min_idx; 
