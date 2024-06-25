@@ -10,15 +10,16 @@
 #include "DataGenerator.cpp"
 using namespace std;
 
+void bubbleSort(int* &arr, int n);
 void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions);
 void bubbleSortFindRunTime(int *&arr, int n, long long &time);
 
+void countingSort(int* &arr, int n);
 void countingSortCountComparisons(int* &arr, int n, long long& count_comparisons);
 void countingSortFindRunTime(int* &arr, int n, long long &run_time);
 
-void flashSortRunTime(int *&arr, int n, long long &time);
-void insertionSortCompare_1(int *arr, int n, long long &count_comparisons);
-void flashSortCompare(int *&arr, int n, long long &count_comparisons);
+void flashSortCountComparisons(int* &arr, int n, long long& count_comparisons);
+void flashSortFindRunTime(int* &arr, int n, long long& run_time) ;
 
 void heapify(int* &arr, int n, int i);
 void heapSort(int* &arr, int n);
@@ -26,11 +27,9 @@ void heapifyCountComparisons(int* &arr, int n, int i, long long &count_compariso
 void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons);
 void heapSortFindRunTime(int* &arr, int n, long long &run_time);
 
-
-
-void insertionSort(int *arr, int n);
-void insertionSortCompare(int *&arr, int n, long long &count_comparisons);
-void insertionSortRunTime(int *&arr, int n, long long &time);
+void insertionSort(int* &arr, int n);
+void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisions);
+void insertionSortFindRunTime(int* &arr, int n, long long &run_time);
 
 void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison);
 void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);

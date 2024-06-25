@@ -1,41 +1,41 @@
 #include "../header.h"
 
 
-void flashSortCountComparisons(int*& arr, int n, long long& count_comparison) 
+void flashSortCountComparisons(int* &arr, int n, long long& count_comparisons)
 {
-    count_comparison = 0;
+    count_comparisons = 0;
     
-    if (++count_comparison && n <= 1) return;
+    if (++count_comparisons && n <= 1) return;
 
     int min_val = arr[0], max_val = arr[0];
     int m = int(0.43 * n);
     vector<int> count(m, 0);
 
-    for (int i = 1; ++count_comparison && i < n; ++i) {
-        if (++count_comparison && arr[i] < min_val) min_val = arr[i];
-        if (++count_comparison && arr[i] > max_val) max_val = arr[i];
+    for (int i = 1; ++count_comparisons && i < n; ++i) {
+        if (++count_comparisons && arr[i] < min_val) min_val = arr[i];
+        if (++count_comparisons && arr[i] > max_val) max_val = arr[i];
     }
 
-    if (++count_comparison && min_val == max_val) return;
+    if (++count_comparisons && min_val == max_val) return;
 
     double c1 = (m - 1.0) / (max_val - min_val);
-    for (int i = 0; ++count_comparison && i < n; ++i) {
+    for (int i = 0; ++count_comparisons && i < n; ++i) {
         int k = int(c1 * (arr[i] - min_val));
         ++count[k];
     }
 
-    for (int k = 1; ++count_comparison && k < m; ++k) {
+    for (int k = 1; ++count_comparisons && k < m; ++k) {
         count[k] += count[k - 1];
     }
 
     int move = 0, j = 0, k = m - 1, t, flash;
-    while (++count_comparison && move < n - 1) {
-        while (++count_comparison && j > count[k] - 1) {
+    while (++count_comparisons && move < n - 1) {
+        while (++count_comparisons && j > count[k] - 1) {
             ++j;
             k = int(c1 * (arr[j] - min_val));
         }
         flash = arr[j];
-        while (++count_comparison && j != count[k]) {
+        while (++count_comparisons && j != count[k]) {
             k = int(c1 * (flash - min_val));
             t = arr[--count[k]];
             arr[count[k]] = flash;
@@ -44,10 +44,10 @@ void flashSortCountComparisons(int*& arr, int n, long long& count_comparison)
         }
     }
 
-    for (int i = 1; ++count_comparison && i < n; ++i) {
+    for (int i = 1; ++count_comparisons && i < n; ++i) {
         int key = arr[i];
         int j = i - 1;
-        while (++count_comparison && j >= 0 && arr[j] > key) {
+        while (++count_comparisons && j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             --j;
         }
@@ -56,7 +56,7 @@ void flashSortCountComparisons(int*& arr, int n, long long& count_comparison)
 }
 
 
-void flashSortFindRunTime(int*& arr, int n, long long& run_time) 
+void flashSortFindRunTime(int* &arr, int n, long long& run_time) 
 {
     // Start the clock
     clock_t start = clock();

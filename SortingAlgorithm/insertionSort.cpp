@@ -1,6 +1,6 @@
 #include "header.h"
 
-void insertionSort(int *&arr, int n)
+void insertionSort(int* &arr, int n)
 {
     int key, prev;
     for (int cur = 1; cur < n; cur++) {
@@ -14,7 +14,7 @@ void insertionSort(int *&arr, int n)
     }
 }
 
-void insertionSortCountComparisons(int *&arr, int n, long long &count_comparisions) // comparisons not comparisions 
+void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisions) // comparisons not comparisions 
 {
     count_comparisions = 0;
     int key, prev;
@@ -29,7 +29,7 @@ void insertionSortCountComparisons(int *&arr, int n, long long &count_comparisio
     }
 }
 
-void insertionSortFindRunTime(int *&arr, int n, long long &run_time)
+void insertionSortFindRunTime(int* &arr, int n, long long &run_time)
 {
     clock_t begin = clock();
     int key, prev;
