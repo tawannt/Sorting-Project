@@ -76,7 +76,7 @@ void countingSortCountComparisons(int* &arr, int n, long long& count_comparisons
 
 void countingSortFindRunTime(int* &arr, int n, long long &run_time)
 {
-    clock_t begin = clock();
+    auto start = chrono::steady_clock::now();
 
     int maxElement = arr[0];
     int minElement = arr[0];
@@ -110,6 +110,6 @@ void countingSortFindRunTime(int* &arr, int n, long long &run_time)
     delete[] count;
     delete[] tmp;
 
-    clock_t end = clock();
-    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }

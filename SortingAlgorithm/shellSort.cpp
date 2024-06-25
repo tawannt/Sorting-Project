@@ -58,7 +58,7 @@ void shellSortCountComparisons(int* &arr, int n, long long& count_comparisions)
 //find runtime
 void shellSortFindRunTime(int* &arr, int n, long long& run_time)
 {
-    clock_t begin = clock();
+    auto start = chrono::steady_clock::now();
     for (int gap = n / 2; gap > 0; gap /= 2)
     {
         // Do a gapped insertion sort for this gap size.
@@ -81,8 +81,8 @@ void shellSortFindRunTime(int* &arr, int n, long long& run_time)
             arr[j] = temp;
         }
     }
-    clock_t end = clock();
-    run_time = (long long)(end - begin);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 // REFERENCES:

@@ -124,10 +124,10 @@ void mergeSort(int *&arr, int left, int right)
 
 
 void mergeSortFindRunTime(int* &arr, int n, long long &run_time) {
-    clock_t start = clock();
+    auto start = chrono::steady_clock::now();
     mergeSort(arr, 0, n - 1);
-    clock_t end = clock();
-    run_time = (long long)((end - start) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 

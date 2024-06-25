@@ -50,7 +50,7 @@ void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisons)
 // find runtime
 void bubbleSortFindRunTime(int* &arr, int n, long long& run_time)
 {
-    clock_t begin = clock();
+    auto start = chrono::steady_clock::now();
     int i, j;
     bool swapped;
     for (i = 0; i < n - 1; i++) {
@@ -65,9 +65,8 @@ void bubbleSortFindRunTime(int* &arr, int n, long long& run_time)
             break;
     }
 
-    clock_t end = clock();
-
-    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 /*

@@ -70,7 +70,7 @@ void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons) //
 
 void heapSortFindRunTime(int* &arr, int n, long long &run_time)
 {
-    clock_t begin = clock();
+    auto start = chrono::steady_clock::now();
     for(int i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
@@ -80,8 +80,8 @@ void heapSortFindRunTime(int* &arr, int n, long long &run_time)
         heapify(arr, i, 0);
     }
 
-    clock_t end = clock();
-    run_time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 

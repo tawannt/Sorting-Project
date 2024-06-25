@@ -7,6 +7,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <time.h>
+#include <chrono>
 #include "DataGenerator.cpp"
 using namespace std;
 

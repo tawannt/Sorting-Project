@@ -59,7 +59,7 @@ void flashSortCountComparisons(int* &arr, int n, long long& count_comparisons)
 void flashSortFindRunTime(int* &arr, int n, long long& run_time) 
 {
     // Start the clock
-    clock_t start = clock();
+    auto start = chrono::steady_clock::now();
 
     if (n <= 1) return;
 
@@ -111,8 +111,8 @@ void flashSortFindRunTime(int* &arr, int n, long long& run_time)
     }
 
     // Stop the clock and calculate the runtime
-    clock_t end = clock();
-    run_time = (long long)((end - start) * 1000 / CLOCKS_PER_SEC);
+    auto end = chrono::steady_clock::now();
+    run_time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 

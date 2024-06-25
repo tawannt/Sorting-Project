@@ -63,10 +63,10 @@ void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 // run time
 void quickSortFindRunTime(int *&arr, int n, long long &time)
 {
-    clock_t begin = clock();
+   auto start = chrono::steady_clock::now();
     quickSort(arr, 0, n - 1);
-    clock_t end = clock();
-    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 /* Note for report

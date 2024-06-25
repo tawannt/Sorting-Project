@@ -25,8 +25,7 @@ void selectionSort(int* &arr, int n)
 void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use reference int *&arr or just int *arr both of them work
 {
 	// start time
- 	clock_t begin = clock();
-
+ 	auto start = chrono::steady_clock::now();
 	
 	int i, j, min_idx; 
 	for(i = 0; i < n - 1; i++)
@@ -45,9 +44,8 @@ void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use 
 	}
 
     // end time
-	clock_t end = clock();
-	
-	time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000); // unit is milisecond 
+	auto end = chrono::steady_clock::now();
+    time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 // counting comparisons

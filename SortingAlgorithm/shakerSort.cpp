@@ -95,7 +95,7 @@ void shakerSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 // run time
 void shakerSortFindRunTime(int* &arr, int n, long long &time)
 {
-    clock_t begin = clock();
+    auto start = chrono::steady_clock::now();
     bool swapped = true;
     int i = 0;
     int j = n - 1;
@@ -133,8 +133,8 @@ void shakerSortFindRunTime(int* &arr, int n, long long &time)
         i++;
         j--;
     }
-    clock_t end = clock();
-    time = (long long)((end - begin) / CLOCKS_PER_SEC * 1000);
+    auto end = chrono::steady_clock::now();
+    time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 }
 
 /* Note for report
