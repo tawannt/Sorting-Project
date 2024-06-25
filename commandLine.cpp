@@ -190,6 +190,8 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
 void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size)
 {
     int *arr = readFile(filenameInput, size);
+    int *arr_2 = new int [size];
+    for(int i = 0; i < size; i++) arr_2[i] = arr[i];
     if(arr != NULL)
     {
         // initialize function pointer
@@ -211,6 +213,7 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
         {
             cout << algorithmName_1 << " is not in set!!!\n";
             delete[] arr;
+            delete[] arr_2;
             return;
         }
 
@@ -241,5 +244,39 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
 
         delete[] arr;
     }
-    else cout << "Error!!!\n";
+    else cout << "ERROR READING ARRAY FILE!!!\n";
+}
+
+void command_5(string algorithmName_1, string algorithmName_2, int size, string inputOrder)
+{
+    // generate arr base on order
+    int *arr = new int[size];
+    Generate(inputOrder, arr, size);
+
+    // write file
+    writeFile("input.txt", arr, size);
+
+    // initialize function pointer
+    void (*findRunTime)(int *&, int, long long &) = NULL;
+    void (*countComparisons)(int *&, int, long long &) = NULL;
+
+    // do for algorithm 1
+    selectAlgorithm(findRunTime, countComparisons, algorithmName_1);
+    
+    if(findRunTime && countComparisons)
+    {
+        long long time_1 = 0, cnt_1 = 0;
+        Do(findRunTime, countComparisons, arr, size, "-both", time_1, cnt_1);
+    }
+    else
+    {
+        cout << algorithmName_1 << " is not in set!!!\n";
+        delete[] arr;
+        return;
+    }
+
+    // do for algorithm 2
+    findRunTime = NULL
+
+    delete[] arr;
 }
