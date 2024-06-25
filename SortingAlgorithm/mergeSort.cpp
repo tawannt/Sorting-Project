@@ -1,6 +1,6 @@
-#include "header.h"
+#include "./header.h"
 
-void mergeWithComparisonCount(int*& arr, int left, int mid, int right, long long& count_comparison) {
+void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
@@ -40,7 +40,7 @@ void mergeWithComparisonCount(int*& arr, int left, int mid, int right, long long
 }
 
 
-void mergeSortCountComparisons(int*& arr, int n, long long& count_comparison) {
+void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison) {
     if (n <= 1)
         return;
 
@@ -62,7 +62,7 @@ void mergeSortCountComparisons(int*& arr, int n, long long& count_comparison) {
 }
 
 
-void mergeArrays(int*& arr, int left, int mid, int right) {
+void mergeArrays(int* &arr, int left, int mid, int right) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
     auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
@@ -103,7 +103,7 @@ void mergeArrays(int*& arr, int left, int mid, int right) {
 }
 
 
-void mergeSortFindRunTime(int*& arr, int n, long long& run_time) {
+void mergeSortFindRunTime(int* &arr, int n, long long &run_time) {
     if (n <= 1) {
         return;
     }

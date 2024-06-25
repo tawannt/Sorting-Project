@@ -13,29 +13,29 @@ using namespace std;
 void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisions);
 void bubbleSortFindRunTime(int *&arr, int n, long long &time);
 
-void countingSortCountComparisons(int *&arr, int n, long long &count_comparisons);
-void countingSortFindRunTime(int *&arr, int n, long long &time);
-
+void countingSortCountComparisons(int* &arr, int n, long long& count_comparisons);
+void countingSortFindRunTime(int* &arr, int n, long long &run_time);
 
 void flashSortRunTime(int *&arr, int n, long long &time);
 void insertionSortCompare_1(int *arr, int n, long long &count_comparisons);
 void flashSortCompare(int *&arr, int n, long long &count_comparisons);
 
-void heapify(int *&arr, int n, int i);
-void heapSortRunTime(int *&arr, int n, long long &time);
-void heapifyCompare(int *&arr, int n, int i, long long &count_comparisons);
-void heapSortCompare(int *&arr, int n, long long &count_comparisons);
+void heapify(int* &arr, int n, int i);
+void heapSort(int* &arr, int n);
+void heapifyCountComparisons(int* &arr, int n, int i, long long &count_comparisons);
+void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons);
+void heapSortFindRunTime(int* &arr, int n, long long &run_time);
+
+
 
 void insertionSort(int *arr, int n);
 void insertionSortCompare(int *&arr, int n, long long &count_comparisons);
 void insertionSortRunTime(int *&arr, int n, long long &time);
 
-void merge(int*&arr, int l, int m, int r);
-void mergeSort(int*& arr, int l, int r);
-void mergeSortRunTime(int *&arr, int n, long long &time);
-void mergeCount(int *arr, int l, int m, int r, long long &count);
-void mergeSortCount(int*& arr, int l, int r, long long &count);
-void mergeSortCompare(int *&arr, int n, long long &count_comparisons);
+void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison);
+void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);
+void mergeArrays(int* &arr, int left, int mid, int right);
+void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
 
 void quickSort(int *&arr, int left, int right);
 void quickSortFindRunTime(int *&arr, int n, long long &time);

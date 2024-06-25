@@ -1,6 +1,6 @@
 #include "../header.h"
 
-void heapify(int *&arr, int n, int i)
+void heapify(int* &arr, int n, int i)
 {
     int largest = i; //consider i as the root of the max heap
     
@@ -21,7 +21,7 @@ void heapify(int *&arr, int n, int i)
     }
 }
 
-void heapSort(int *&arr, int n)
+void heapSort(int* &arr, int n)
 {
     //build max heap
     for(int i = n/2 - 1; i >= 0; i--)
@@ -34,7 +34,7 @@ void heapSort(int *&arr, int n)
     }
 }
 
-void heapifyCountComparisons(int *&arr, int n, int i, long long &count_comparisions)
+void heapifyCountComparisons(int* &arr, int n, int i, long long &count_comparisons)
 {
     int largest = i;
     
@@ -42,33 +42,33 @@ void heapifyCountComparisons(int *&arr, int n, int i, long long &count_comparisi
 
     int right = 2 * i + 2;
 
-    if((left < n && ++count_comparisions) && (arr[left] > arr[largest] && ++count_comparisions))
+    if((left < n && ++count_comparisons) && (arr[left] > arr[largest] && ++count_comparisons))
         largest = left;
 
-    if((right < n && ++count_comparisions) && (arr[right] > arr[largest] && ++count_comparisions))
+    if((right < n && ++count_comparisons) && (arr[right] > arr[largest] && ++count_comparisons))
         largest = right;
     
-    if(largest != i && ++count_comparisions)
+    if(largest != i && ++count_comparisons)
     {
         swap(arr[i], arr[largest]);
         heapify(arr, n, largest);
     }
 }
 
-void heapSortCountComparisons(int *&arr, int n, long long &count_comparisions) // comparisons not comparisions 
+void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons) // comparisons not comparisions 
 {
-    count_comparisions = 0;
-    for(int i = n/2 - 1; ++count_comparisions && i >= 0; i--)
-        heapifyCountComparisons(arr, n, i, count_comparisions);
+    count_comparisons = 0;
+    for(int i = n/2 - 1; ++count_comparisons && i >= 0; i--)
+        heapifyCountComparisons(arr, n, i, count_comparisons);
 
-    for(int i = n - 1; ++count_comparisions && i > 0; i--)
+    for(int i = n - 1; ++count_comparisons && i > 0; i--)
     {
         swap(arr[i], arr[0]);
-        heapifyCountComparisons(arr, i, 0, count_comparisions);
+        heapifyCountComparisons(arr, i, 0, count_comparisons);
     }
 }
 
-void heapSortFindRunTime(int *&arr, int n, long long &run_time)
+void heapSortFindRunTime(int* &arr, int n, long long &run_time)
 {
     clock_t begin = clock();
     for(int i = n/2 - 1; i >= 0; i--)

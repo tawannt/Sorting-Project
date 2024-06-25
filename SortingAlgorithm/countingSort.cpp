@@ -1,6 +1,6 @@
 #include "header.h"
 
-void countingSort(int *&arr, int n)
+void countingSort(int* &arr, int n)
 {
     int maxElement = arr[0];
     int minElement = arr[0];
@@ -36,7 +36,7 @@ void countingSort(int *&arr, int n)
     delete[] tmp;
 }
 
-void countingSortCountComparisons(int *&arr, int n, long long& count_comparisons)
+void countingSortCountComparisons(int* &arr, int n, long long& count_comparisons)
 {
     count_comparisons = 0;
 
@@ -74,7 +74,7 @@ void countingSortCountComparisons(int *&arr, int n, long long& count_comparisons
     delete[] tmp;
 }
 
-void countingSortFindRunTime(int *&arr, int n, long long &run_time)
+void countingSortFindRunTime(int* &arr, int n, long long &run_time)
 {
     clock_t begin = clock();
 
