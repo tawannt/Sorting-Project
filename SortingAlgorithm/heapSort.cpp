@@ -55,7 +55,7 @@ void heapifyCountComparision(int *&arr, int n, int i, long long &count_comparisi
     }
 }
 
-void heapSortCountComparision(int *&arr, int n, long long &count_comparisions)
+void heapSortCountComparision(int *&arr, int n, long long &count_comparisions) // comparisons not comparisions 
 {
     count_comparisions = 0;
     for(int i = n/2 - 1; ++count_comparisions && i >= 0; i--)
