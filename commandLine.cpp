@@ -135,8 +135,7 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
         // Run time
         // need temp arr because after run function the array will be sort, so to ensure that before countComparison we need to reset temp arr.
         int *temp = new int[size];
-        for (int i = 0; i < size; i++)
-            temp[i] = arr[i];
+        for (int i = 0; i < size; i++) temp[i] = arr[i];
 
         findRunTime(temp, size, time);
         delete[] temp;
@@ -147,6 +146,7 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
     {
         countComparisons(arr, size, count_comparison);
     }
+    else cout << "WRONG OUTPUTPARAMETERS!!!\n";
 }
 
 void command_1(string algorithmName, string inputFileName, string outputParameter)
@@ -196,12 +196,25 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
     if(findRunTime != NULL && countComparisons != NULL)
     {
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+
+        // cout 
+        string tmp;
+        if(inputOrder == "-rand") tmp = "randomized data";
+        if(inputOrder == "-nsorted") tmp = "nearly sorted data";
+        if(inputOrder == "-sorted") tmp = "sorted data";
+        if(inputOrder == "-rev") tmp = "reverse sorted data";
+
+        cout << "ALGORITHM MODE\n";
+        cout << "Input size: " << size << '\n';
+        cout << "Input order: " << tmp << '\n';
+        cout << "----------------------------\n";
+        if(time >= 0) cout << "Running time: " << time << '\n';
+        if(cnt_cmp > 2) cout << "Comparisons:" << cnt_cmp << '\n';
     }
     else  
     {
         cout << "ERROR TO FIND FUNCTION!!!\n"; 
     }
-
 
     delete[] arr;
 }
