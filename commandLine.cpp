@@ -169,7 +169,7 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
     //present running time and comparisons
     doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
     if(runTime >= 0) cout << "Running time: " << runTime << " (miliseconds)\n";
-    if(comparisons > 0) cout << "Count comparisions: " << comparisons;
+    if(comparisons > 0) cout << "Comparisons: " << comparisons;
 
     // write file
     writeFile("output.txt", arr, size);
@@ -191,15 +191,15 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
 
     selectAlgorithm(findRunTime, countComparisons, algorithmName);
 
+    long long cnt_cmp = 0, time = -1;
+
     if(findRunTime != NULL && countComparisons != NULL)
     {
-        long long cnt_cmp = 0, time = 0;
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
-        // 3 cai if el
     }
-    else 
+    else  
     {
-        //  bao loi 
+        cout << "ERROR TO FIND FUNCTION!!!\n"; 
     }
 
 
