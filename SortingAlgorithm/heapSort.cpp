@@ -42,13 +42,13 @@ void heapifyCountComparisons(int* &arr, int n, int i, long long &count_compariso
 
     int right = 2 * i + 2;
 
-    if((left < n && ++count_comparisons) && (arr[left] > arr[largest] && ++count_comparisons))
+    if((++count_comparisons && left < n) && (++count_comparisons && arr[left] > arr[largest]))
         largest = left;
 
-    if((right < n && ++count_comparisons) && (arr[right] > arr[largest] && ++count_comparisons))
+    if((++count_comparisons && right < n) && (++count_comparisons && arr[right] > arr[largest]))
         largest = right;
     
-    if(largest != i && ++count_comparisons)
+    if(++count_comparisons && largest != i)
     {
         swap(arr[i], arr[largest]);
         heapify(arr, n, largest);
