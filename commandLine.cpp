@@ -219,6 +219,118 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
     delete[] arr;
 }
 
+
+
+
+
+
+
+void command_2(string algorithmName, int size, string inputOrder, string outputPara)
+{
+    // Sinh dữ liệu tự động
+    int *arr = new int[size];
+    Generate(inputOrder, arr, size);
+
+    // Ghi dữ liệu vào file input
+    writeFile("input.txt", arr, size);
+
+    // Chạy thuật toán
+    void (*findRunTime)(int *&, int, long long &) = NULL;
+    void (*countComparisons)(int *&, int, long long &) = NULL;
+
+    selectAlgorithm(findRunTime, countComparisons, algorithmName);
+
+    if (findRunTime != NULL && countComparisons != NULL)
+    {
+        long long cnt_cmp = 0, time = 0;
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+
+        // Ghi dữ liệu đã sắp xếp vào file output
+        writeFile("output.txt", arr, size);
+
+        // Hiển thị kết quả
+        cout << "Algorithm: " << algorithmName << '\n';
+        cout << "Input size: " << size << '\n';
+        cout << "Input order: " << inputOrder << '\n';
+        if (outputPara == "-time" || outputPara == "-both")
+            cout << "Running time: " << time << " milliseconds\n";
+        if (outputPara == "-comp" || outputPara == "-both")
+            cout << "Comparisons: " << cnt_cmp << '\n';
+    }
+    else 
+    {
+        cout << "Algorithm selection error!\n";
+    }
+
+    delete[] arr;
+}
+
+void command_3(string algorithmName, int size, string outputPara)
+{
+    // Tạo các mảng theo các kiểu sắp xếp khác nhau
+    int *arr = new int[size];
+    long long time = 0, cnt_cmp = 0;
+
+    // Chạy thuật toán và hiển thị kết quả cho từng kiểu sắp xếp
+    void (*findRunTime)(int *&, int, long long &) = NULL;
+    void (*countComparisons)(int *&, int, long long &) = NULL;
+    selectAlgorithm(findRunTime, countComparisons, algorithmName);
+
+    if (findRunTime != NULL && countComparisons != NULL)
+    {
+        // Random order
+        Generate("-rand", arr, size);
+        writeFile("input_1.txt", arr, size);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        cout << "Input order: Randomized\n";
+        if (outputPara == "-time" || outputPara == "-both")
+            cout << "Running time: " << time << " milliseconds\n";
+        if (outputPara == "-comp" || outputPara == "-both")
+            cout << "Comparisons: " << cnt_cmp << '\n';
+        cout << "----------------------------\n";
+
+        // Nearly sorted order
+        Generate("-nsorted", arr, size);
+        writeFile("input_2.txt", arr, size);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        cout << "Input order: Nearly Sorted\n";
+        if (outputPara == "-time" || outputPara == "-both")
+            cout << "Running time: " << time << " milliseconds\n";
+        if (outputPara == "-comp" || outputPara == "-both")
+            cout << "Comparisons: " << cnt_cmp << '\n';
+        cout << "----------------------------\n";
+
+        // Sorted order
+        Generate("-sorted", arr, size);
+        writeFile("input_3.txt", arr, size);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        cout << "Input order: Sorted\n";
+        if (outputPara == "-time" || outputPara == "-both")
+            cout << "Running time: " << time << " milliseconds\n";
+        if (outputPara == "-comp" || outputPara == "-both")
+            cout << "Comparisons: " << cnt_cmp << '\n';
+        cout << "----------------------------\n";
+
+        // Reverse sorted order
+        Generate("-rev", arr, size);
+        writeFile("input_4.txt", arr, size);
+        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
+        cout << "Input order: Reversed\n";
+        if (outputPara == "-time" || outputPara == "-both")
+            cout << "Running time: " << time << " milliseconds\n";
+        if (outputPara == "-comp" || outputPara == "-both")
+            cout << "Comparisons: " << cnt_cmp << '\n';
+        cout << "----------------------------\n";
+    }
+    else
+    {
+        cout << "Algorithm selection error!\n";
+    }
+
+    delete[] arr;
+}
+
+
 void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size)
 {
     // we need 2 the same arr like in Do function
