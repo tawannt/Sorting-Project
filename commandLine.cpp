@@ -160,14 +160,18 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
     cout << "Input file: " << inputFileName << endl;
     cout << "Input size: " << size << endl;
     cout << "--------------------------\n";
+
     //select function
     void (*findRunTime)(int*&, int, long long&) = NULL;
     void (*countComparisons)(int*&, int, long long&) = NULL;
     selectAlgorithm(findRunTime, countComparisons, algorithmName);
+
     //present running time and comparisons
     doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
-    if(runTime > 0) cout << "Running time: " << runTime << endl;
-    if(countComparisons > 0) cout << "Count comparisions: " << countComparisons;
+    if(runTime >= 0) cout << "Running time: " << runTime << " (miliseconds)\n";
+    if(comparisons > 0) cout << "Count comparisions: " << comparisons;
+
+    // write file
     writeFile("output.txt", arr, size);
 }
 
@@ -282,6 +286,7 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
 
     // initialize time 1 2 and cnt 1 2
     long long time_1 = -1, time_2 = -1, cnt_1 = 0, cnt_2 = 0;
+
     // do for algorithm 1
     selectAlgorithm(findRunTime, countComparisons, algorithmName_1);
     if(findRunTime && countComparisons)
