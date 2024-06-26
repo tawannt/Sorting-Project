@@ -6,7 +6,7 @@
 #include <string.h>
 #include <fstream>
 #include <stdlib.h>
-#include <time.h>
+// #include <time.h> We had used it for the begin but it does not work well
 #include <chrono>
 #include "DataGenerator.cpp"
 using namespace std;
@@ -50,7 +50,6 @@ void quickSortFindRunTime(int *&arr, int n, long long &time);
 
 int getMax(int* &arr, int n);
 void countSort(int* &arr, int n, int exp);
-
 void radixSort(int* &arr, int n);
 int getMaxCompare(int* &arr, int n, long long &cnt_cmp);
 void countSortCompare(int* &arr, int n, int exp, long long &cnt_cmp);
