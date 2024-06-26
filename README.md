@@ -1,4 +1,4 @@
-Hi everyone, our group will have some format rules to follow when organizing the 'sorting algorithm' file.
+HHi everyone, our group will have some format rules to follow when organizing the 'sorting algorithm' file.
 Format:
 - First Line: #include "header.h"
     + The file "header.h" will be created later whose contents is libraries in C++
