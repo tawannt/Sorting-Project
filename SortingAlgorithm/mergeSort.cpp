@@ -3,7 +3,7 @@
 void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison) {
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
-    auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
+    int *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
 
     for (int i = 0; ++count_comparison && i < subArrayOne; i++)
         leftArray[i] = arr[left + i];
@@ -41,32 +41,21 @@ void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long
 }
 
 
-void mergeSortHelpCountComparisons(int* &arr, int n, long long &count_comparison) {
-    if (++count_comparison && n <= 1)
+void mergeSortHelpCountComparisons(int* &arr, int left, int right, long long &count_comparison) {
+    if (++count_comparison && left >= right)
         return;
-
-    int mid = n / 2;
-    int* leftArray = new int[mid];
-    int* rightArray = new int[n - mid];
-
-    for (int i = 0; ++count_comparison && i < mid; i++)
-        leftArray[i] = arr[i];
-    for (int i = 0; ++count_comparison && i < (n - mid); i++)
-        rightArray[i] = arr[mid + i];
-
-    mergeSortCountComparisons(leftArray, mid, count_comparison);
-    mergeSortCountComparisons(rightArray, n - mid, count_comparison);
-    mergeWithComparisonCount(arr, 0, mid - 1, n - 1, count_comparison);
-
-    delete[] leftArray;
-    delete[] rightArray;
+    int mid = left + (right - left) / 2;
+    mergeSortHelpCountComparisons(arr, left, mid, count_comparison);
+    mergeSortHelpCountComparisons(arr, mid + 1, right, count_comparison);
+    mergeWithComparisonCount(arr, left, mid, right, count_comparison);
 }
+
 
 
 void mergeSortCountComparisons(int *&arr, int n, long long &count_comparisons)
 {
     count_comparisons = 0;
-    mergeSortHelpCountComparisons(arr, n, count_comparisons);
+    mergeSortHelpCountComparisons(arr, 0, n - 1, count_comparisons);
 }
 
 void mergeArrays(int* &arr, int left, int mid, int right) {

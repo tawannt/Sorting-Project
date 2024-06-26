@@ -23,33 +23,56 @@ bool isNum(string str){
 
 int main(int argc, const char *argv[])
 {
-    if (argc != 5 && argc != 6){
+    if (argc != 5 && argc != 6)
+    {
         printOptions();
         return 0;
-    } else {
-        // const char* as the same as string !?
+    } 
+    else 
+    {
+        // const char* as the same as string ?!
         string algorithmName_1, algorithmName_2, outputParameter, inputOrder, fileInput;
         int size;
         string mode = argv[1];
-        if (mode == "-a"){
-            if (argc == 5){
-                if (!isNum(argv[3])){
-                    command_1(argv[2], argv[3], argv[4]);
-                } else { //cmd 3
 
+        if (mode == "-a")
+        {
+            if (argc == 5)
+            {
+                if (!isNum(argv[3]))
+                {
+                    algorithmName_1 = argv[2];
+                    fileInput = argv[3];
+                    outputParameter = argv[4];
+                    command_1(algorithmName_1, fileInput, outputParameter);
                 }
-            } else { //cmd 2
-
+                else 
+                { 
+                    algorithmName_1 = argv[2];
+                    size = atoi(argv[3]);
+                    outputParameter = argv[4];
+                    command_3(algorithmName_1, size, outputParameter);
+                }
+            } 
+            else 
+            { 
+                algorithmName_1 = argv[2];
+                size = atoi(argv[3]);
+                inputOrder = argv[4];
+                outputParameter = argv[5];
+                command_2(algorithmName_1, size, inputOrder, outputParameter);
             }
         } 
         else 
-        { // mode == "c"
+        { 
+            // mode == "c"
             if (argc == 5)
-            { //cmd 4
+            { 
+                //cmd 4
                 algorithmName_1 = argv[2];
                 algorithmName_2 = argv[3];
                 fileInput = argv[4];
-                command_4(argv[2], argv[3], argv[4], size);
+                command_4(algorithmName_1, algorithmName_2, fileInput, size);
             } 
             else 
             { 

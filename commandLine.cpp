@@ -154,25 +154,34 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
     int size;
     long long runTime = -1, comparisons = 0;
     int* arr = readFile(inputFileName, size);
-    //print information
-    cout << "ALGORITHM MODE\n";
-    cout << "Algorithm: " << algorithmName << endl;
-    cout << "Input file: " << inputFileName << endl;
-    cout << "Input size: " << size << endl;
-    cout << "--------------------------\n";
+    if (arr != NULL)
+    {
+        // select function
+        void (*findRunTime)(int*&, int, long long&) = NULL;
+        void (*countComparisons)(int*&, int, long long&) = NULL;
+        selectAlgorithm(findRunTime, countComparisons, algorithmName);
 
-    //select function
-    void (*findRunTime)(int*&, int, long long&) = NULL;
-    void (*countComparisons)(int*&, int, long long&) = NULL;
-    selectAlgorithm(findRunTime, countComparisons, algorithmName);
+        if (findRunTime && countComparisons)
+        {
+            // print information
+            cout << "ALGORITHM MODE\n";
+            cout << "Algorithm: " << algorithmName << endl;
+            cout << "Input file: " << inputFileName << endl;
+            cout << "Input size: " << size << endl;
+            cout << "--------------------------\n";
 
-    //present running time and comparisons
-    doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
-    if(runTime >= 0) cout << "Running time: " << runTime << " (miliseconds)\n";
-    if(comparisons > 0) cout << "Comparisons: " << comparisons;
+            // present running time and comparisons
+            doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
+            if(runTime >= 0) cout << "Running time: " << runTime << " (miliseconds)\n";
+            if(comparisons > 0) cout << "Comparisons: " << comparisons;
 
-    // write file
-    writeFile("output.txt", arr, size);
+            // write file
+            writeFile("output.txt", arr, size);
+        }
+        else cout << "ALGORITHM IS NOT IN SET!!!\n";
+        delete[] arr;
+    }
+    else cout << "ERROR READING FILE!!!\n";
 }
 
 void command_2(string algorithmName, int size, string inputOrder, string outputPara)
@@ -219,112 +228,92 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
     delete[] arr;
 }
 
-
-
-
-
-
-
-void command_2(string algorithmName, int size, string inputOrder, string outputPara)
-{
-    // Sinh dữ liệu tự động
-    int *arr = new int[size];
-    Generate(inputOrder, arr, size);
-
-    // Ghi dữ liệu vào file input
-    writeFile("input.txt", arr, size);
-
-    // Chạy thuật toán
-    void (*findRunTime)(int *&, int, long long &) = NULL;
-    void (*countComparisons)(int *&, int, long long &) = NULL;
-
-    selectAlgorithm(findRunTime, countComparisons, algorithmName);
-
-    if (findRunTime != NULL && countComparisons != NULL)
-    {
-        long long cnt_cmp = 0, time = 0;
-        doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
-
-        // Ghi dữ liệu đã sắp xếp vào file output
-        writeFile("output.txt", arr, size);
-
-        // Hiển thị kết quả
-        cout << "Algorithm: " << algorithmName << '\n';
-        cout << "Input size: " << size << '\n';
-        cout << "Input order: " << inputOrder << '\n';
-        if (outputPara == "-time" || outputPara == "-both")
-            cout << "Running time: " << time << " milliseconds\n";
-        if (outputPara == "-comp" || outputPara == "-both")
-            cout << "Comparisons: " << cnt_cmp << '\n';
-    }
-    else 
-    {
-        cout << "Algorithm selection error!\n";
-    }
-
-    delete[] arr;
-}
-
 void command_3(string algorithmName, int size, string outputPara)
 {
-    // Tạo các mảng theo các kiểu sắp xếp khác nhau
+    // initialize 
     int *arr = new int[size];
-    long long time = 0, cnt_cmp = 0;
+    long long time = -1, cnt_cmp = 0;
 
-    // Chạy thuật toán và hiển thị kết quả cho từng kiểu sắp xếp
+    // 
     void (*findRunTime)(int *&, int, long long &) = NULL;
     void (*countComparisons)(int *&, int, long long &) = NULL;
     selectAlgorithm(findRunTime, countComparisons, algorithmName);
 
     if (findRunTime != NULL && countComparisons != NULL)
     {
+        string tmp;
+        if(algorithmName == "bubble-sort") tmp = "Bubble Sort";
+        if(algorithmName == "counting-sort") tmp = "Counting Sort";
+        if(algorithmName == "flash-sort") tmp = "Flash Sort";
+        if(algorithmName == "heap-sort") tmp = "Heap Sort";
+        if(algorithmName == "insertion-sort") tmp = "Insertion Sort";
+        if(algorithmName == "merge-sort") tmp = "Merge Sort";
+        if(algorithmName == "quick-sort") tmp = "Quick Sort";
+        if(algorithmName == "radix-sort") tmp = "Radix Sort";
+        if(algorithmName == "selection-sort") tmp = "Selection Sort";
+        if(algorithmName == "shaker-sort") tmp = "Shaker Sort";
+        if(algorithmName == "shell-sort") tmp = "Shell Sort";
+        
+        cout << "ALGORITHM MODE\n";
+        cout << "Algorithm: " << tmp << '\n';
+        cout << "Input size: " << size << '\n';
+        cout << '\n';
+
         // Random order
         Generate("-rand", arr, size);
         writeFile("input_1.txt", arr, size);
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
         cout << "Input order: Randomized\n";
+        cout << "----------------------------\n";
         if (outputPara == "-time" || outputPara == "-both")
             cout << "Running time: " << time << " milliseconds\n";
         if (outputPara == "-comp" || outputPara == "-both")
             cout << "Comparisons: " << cnt_cmp << '\n';
-        cout << "----------------------------\n";
+
+        cout << '\n';
 
         // Nearly sorted order
         Generate("-nsorted", arr, size);
         writeFile("input_2.txt", arr, size);
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
         cout << "Input order: Nearly Sorted\n";
+        cout << "----------------------------\n";
         if (outputPara == "-time" || outputPara == "-both")
             cout << "Running time: " << time << " milliseconds\n";
         if (outputPara == "-comp" || outputPara == "-both")
             cout << "Comparisons: " << cnt_cmp << '\n';
-        cout << "----------------------------\n";
+        
+        cout << '\n';
 
         // Sorted order
         Generate("-sorted", arr, size);
         writeFile("input_3.txt", arr, size);
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
         cout << "Input order: Sorted\n";
+        cout << "----------------------------\n";
         if (outputPara == "-time" || outputPara == "-both")
             cout << "Running time: " << time << " milliseconds\n";
         if (outputPara == "-comp" || outputPara == "-both")
             cout << "Comparisons: " << cnt_cmp << '\n';
-        cout << "----------------------------\n";
+        
+        cout << '\n';
 
         // Reverse sorted order
         Generate("-rev", arr, size);
         writeFile("input_4.txt", arr, size);
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
         cout << "Input order: Reversed\n";
+        cout << "----------------------------\n";
         if (outputPara == "-time" || outputPara == "-both")
             cout << "Running time: " << time << " milliseconds\n";
         if (outputPara == "-comp" || outputPara == "-both")
             cout << "Comparisons: " << cnt_cmp << '\n';
-        cout << "----------------------------\n";
+        
+        cout << '\n';
     }
     else
     {
-        cout << "Algorithm selection error!\n";
+        cout << "ERROR TO FIND FUNCTION!!!\n";
     }
 
     delete[] arr;

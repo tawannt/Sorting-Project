@@ -36,13 +36,15 @@ void insertionSortFindRunTime(int* &arr, int n, long long &run_time);
 
 void mergeSort(int *&arr, int left, int right);
 void mergeWithComparisonCount(int* &arr, int left, int mid, int right, long long &count_comparison);
-void mergeSortHelpCountComparisons(int* &arr, int n, long long &count_comparison);
+void mergeSortHelpCountComparisons(int* &arr, int left, int right, long long &count_comparison);
 void mergeSortCountComparisons(int* &arr, int n, long long &count_comparison);
 void mergeArrays(int* &arr, int left, int mid, int right);
 void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
 
+int partition(int *&arr, int left, int right);
 void quickSort(int *&arr, int left, int right);
-void quickSortCounting(int* &arr, int left, int right, long long &cnt);
+int partitionCompare(int *&arr, int left, int right, long long &count_comparisons);
+void quickSortCounting(int* &arr, int left, int right, long long &count_comparisons);
 void quickSortCountComparisons(int* &arr, int n, long long &count_comparisons);
 void quickSortFindRunTime(int *&arr, int n, long long &time);
 
