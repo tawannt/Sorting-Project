@@ -21,7 +21,7 @@ void insertionSortCountComparisons(int* &arr, int n, long long &count_comparison
     for (int cur = 1; cur < n && ++count_comparisons; cur++) {
         key = arr[cur];
         prev = cur - 1;
-        while (++count_comparisons && arr[prev] > key && ++count_comparisons && arr[prev] > key) {
+        while (++count_comparisons && prev >= 0 && ++count_comparisons && arr[prev] > key) {
             arr[prev + 1] = arr[prev];
             prev--;
         }
