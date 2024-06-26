@@ -30,15 +30,15 @@ void quickSort(int *&arr, int left, int right)
 }
 
 // count comparisons
-int partitionCompare(int *&arr, int left, int right, long long &count_comparisons)
+int partitionCompare(int *&arr, int left, int right, long long &cnt_cmp)
 {
     int pivot = arr[left], i = left - 1, j = right + 1;
     while(true)
     {
-        do { i++; } while (++count_comparisons && arr[i] < pivot);
-        do { j--; } while (++count_comparisons && arr[j] > pivot);
+        do { i++; } while (++cnt_cmp && arr[i] < pivot);
+        do { j--; } while (++cnt_cmp && arr[j] > pivot);
 
-        if(++count_comparisons && i >= j) break;
+        if(++cnt_cmp && i >= j) break;
 
         int tmp = arr[i];
         arr[i] = arr[j];
@@ -47,20 +47,20 @@ int partitionCompare(int *&arr, int left, int right, long long &count_comparison
     return j;
 }
 
-void quickSortCounting(int *&arr, int left, int right, long long &count_comparisons)
+void quickSortCounting(int *&arr, int left, int right, long long &cnt_cmp)
 {
     if(left < right)
     {
-        int p = partitionCompare(arr, left, right, count_comparisons);
-        quickSortCounting(arr, left, p, count_comparisons);
-        quickSortCounting(arr, p + 1, right, count_comparisons);
+        int p = partitionCompare(arr, left, right, cnt_cmp);
+        quickSortCounting(arr, left, p, cnt_cmp);
+        quickSortCounting(arr, p + 1, right, cnt_cmp);
     }
 }
 
-void quickSortCountComparisons(int *&arr, int n, long long &count_comparisons)
+void quickSortCountComparisons(int *&arr, int n, long long &cnt_cmp)
 {
-    count_comparisons = 0;
-    quickSortCounting(arr, 0, n - 1, count_comparisons);
+    cnt_cmp = 0;
+    quickSortCounting(arr, 0, n - 1, cnt_cmp);
 }
 
 // run time

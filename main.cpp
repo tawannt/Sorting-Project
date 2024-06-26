@@ -85,5 +85,8 @@ int main(int argc, const char *argv[])
             }
         }
     }
+    std::cout << '\n';
+    system("pause");
+    std::cout << '\n';
     return 0;
 }

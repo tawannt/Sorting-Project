@@ -43,9 +43,9 @@ void mergeSortFindRunTime(int* &arr, int n, long long &run_time);
 
 int partition(int *&arr, int left, int right);
 void quickSort(int *&arr, int left, int right);
-int partitionCompare(int *&arr, int left, int right, long long &count_comparisons);
-void quickSortCounting(int* &arr, int left, int right, long long &count_comparisons);
-void quickSortCountComparisons(int* &arr, int n, long long &count_comparisons);
+int partitionCompare(int *&arr, int left, int right, long long &cnt_cmp);
+void quickSortCounting(int* &arr, int left, int right, long long &cnt_cmp);
+void quickSortCountComparisons(int* &arr, int n, long long &cnt_cmp);
 void quickSortFindRunTime(int *&arr, int n, long long &time);
 
 int getMax(int* &arr, int n);

@@ -3,11 +3,10 @@
 // basic
 void selectionSort(int *&arr, int n)
 {
-	long long i, j, min_idx; 
-	for(i = 0; i < n - 1; i++)
+	for(int i = 0; i < n - 1; i++)
 	{
-		min_idx = i;
-		for(j = i + 1; j < n; j++)
+		int min_idx = i;
+		for(int j = i + 1; j < n; j++)
 		{
 			if(arr[j] < arr[min_idx]) min_idx = j; 
 		}
@@ -24,23 +23,7 @@ void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use 
 {
 	// start time
  	auto start = chrono::steady_clock::now();
-	
-	long long i, j, min_idx; 
-	for(i = 0; i < n - 1; i++)
-	{
-		min_idx = i;
-		for(j = i + 1; j < n; j++)
-		{
-			if(arr[j] < arr[min_idx]) min_idx = j; 
-		}
-		if(min_idx != i)
-		{
-			int tmp = arr[min_idx];
-			arr[min_idx] = arr[i];
-			arr[i] = tmp;
-		}
-	}
-
+	selectionSort(arr, n);
     // end time
 	auto end = chrono::steady_clock::now();
     time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
@@ -50,21 +33,18 @@ void selectionSortFindRunTime(int* &arr, int n, long long &time) // you can use 
 void selectionSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
 {
 	cnt_cmp = 0;
-
-	long long min_idx, i, j;
 	for (int i = 0; ++cnt_cmp && i < n-1; i++)
     {
-        min_idx = i;
-		int j;
-        for(j = i + 1; ++cnt_cmp && j < n; j++)
+        int min_idx = i;
+        for(int j = i + 1; ++cnt_cmp && j < n; j++)
         {
             if(++cnt_cmp && arr[j] < arr[min_idx]) min_idx = j; 
         }
         if(++cnt_cmp && i != min_idx)
         {
             int tmp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmp;
+			arr[i] = arr[min_idx];
+			arr[min_idx] = tmp;
         }
 	}
 } 

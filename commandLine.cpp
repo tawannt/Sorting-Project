@@ -173,7 +173,7 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
             // present running time and comparisons
             doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
             if(runTime >= 0) cout << "Running time: " << runTime << " (miliseconds)\n";
-            if(comparisons > 0) cout << "Comparisons: " << comparisons;
+            if(comparisons > 0) cout << "Comparisons: " << comparisons << '\n';
 
             // write file
             writeFile("output.txt", arr, size);
@@ -253,7 +253,7 @@ void command_3(string algorithmName, int size, string outputPara)
         if(algorithmName == "selection-sort") tmp = "Selection Sort";
         if(algorithmName == "shaker-sort") tmp = "Shaker Sort";
         if(algorithmName == "shell-sort") tmp = "Shell Sort";
-        
+
         cout << "ALGORITHM MODE\n";
         cout << "Algorithm: " << tmp << '\n';
         cout << "Input size: " << size << '\n';
