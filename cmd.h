@@ -13,5 +13,6 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
 // command function 
 void command_1(string algorithmName, string inputFileName, string outputParameter);
 void command_2(string algorithmName, int size, string inputOrder, string outputPara);
+void command_3(string algorithmName, int size, string outputPara);
 void command_4(string algorithmName_1, string algorithmName_2, string filenameInput, int &size);
 void command_5(string algorithmName_1, string algorithmName_2, int size, string inputOrder);
