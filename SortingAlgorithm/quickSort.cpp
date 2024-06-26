@@ -1,6 +1,6 @@
 #include "../header.h"
 
-void quickSort(int *arr, int left, int right)
+void quickSort(int *&arr, int left, int right)
 {
     int  pi = left + (right - left) / 2; // to avoid overflow
     int pivot = arr[pi];

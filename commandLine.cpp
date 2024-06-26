@@ -139,11 +139,9 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
             temp[i] = arr[i];
 
         findRunTime(temp, size, time);
-        // Compare
-        for (int i = 0; i < size; i++) //  reset
-            temp[i] = arr[i];
-        countComparisons(temp, size, count_comparison);
         delete[] temp;
+        // Compare
+        countComparisons(arr, size, count_comparison);
     }
     else if (outputParameter == "-comp")
     {
