@@ -164,6 +164,6 @@ OPTIMIZED:
 REFERENCES:
     + Basic Radix Sort is refer to slide of teacher Ngo Minh Nhut and Chat-GPT.
     + Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi.
-But it does not work so we use chrono
+But clock_t does not work well so we use chrono.
     + Chat-GPT: https://chatgpt.com/share/7264684e-a209-41af-bfe7-1643118ccf1b
 */
