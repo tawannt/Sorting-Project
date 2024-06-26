@@ -149,6 +149,26 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
     }
 }
 
+void command_1(string algorithmName, string inputFileName, string outputParameter)
+{
+    int size;
+    long long runTime, comparisons;
+    int* arr = readFile(inputFileName, size);
+    //print information
+    cout << "ALGORITHM MODE\n";
+    cout << "Algorithm: " << algorithmName << endl;
+    cout << "Input file: " << inputFileName << endl;
+    cout << "Input size: " << size << endl;
+    cout << "--------------------------\n";
+    //select function
+    void (*findRunTime)(int*&, int, long long&) = NULL;
+    void (*countComparisons)(int*&, int, long long&) = NULL;
+    selectAlgorithm(findRunTime, countComparisons, algorithmName);
+    //present running time and comparisons
+    doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
+    writeFile("output.txt", arr, size);
+}
+
 void command_2(string algorithmName, int size, string inputOrder, string outputPara)
 {
     // generate automatically
