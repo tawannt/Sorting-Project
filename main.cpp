@@ -33,8 +33,8 @@ int main(int argc, const char *argv[])
         string mode = argv[1];
         if (mode == "-a"){
             if (argc == 5){
-                if (!isNum(argv[3])){ //cmd 1:
-
+                if (!isNum(argv[3])){
+                    command_1(argv[2], argv[3], argv[4]);
                 } else { //cmd 3
 
                 }
