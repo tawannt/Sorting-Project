@@ -152,7 +152,7 @@ void doForOutputParameter(void (*findRunTime)(int *&, int, long long &), void (*
 void command_1(string algorithmName, string inputFileName, string outputParameter)
 {
     int size;
-    long long runTime, comparisons;
+    long long runTime = -1, comparisons = 0;
     int* arr = readFile(inputFileName, size);
     //print information
     cout << "ALGORITHM MODE\n";
@@ -166,6 +166,8 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
     selectAlgorithm(findRunTime, countComparisons, algorithmName);
     //present running time and comparisons
     doForOutputParameter(findRunTime, countComparisons, arr, size, outputParameter, runTime, comparisons);
+    if(runTime > 0) cout << "Running time: " << runTime << endl;
+    if(countComparisons > 0) cout << "Count comparisions: " << countComparisons;
     writeFile("output.txt", arr, size);
 }
 
