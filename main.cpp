@@ -90,3 +90,62 @@ int main(int argc, const char *argv[])
     std::cout << '\n';
     return 0;
 }
+
+/*
+this main function is written to experiments base on lab3 guid (page 1)
+
+int main()
+{
+    string data_order[4] = {"-rand", "-nsorted", "-sorted", "-rev"};
+    int data_size[6] = {10000, 30000, 50000, 100000, 300000, 500000};
+    string algorithms_name[11] = {"bubble-sort", "counting-sort", "flash-sort", "heap-sort", "insertion-sort", "merge-sort", "quick-sort", "radix-sort", "selection-sort", "shaker-sort", "shell-sort"};
+    for(int i = 0; i < 4; i++)
+    {
+        cout << data_order[i] << '\n';
+
+        for(int j = 0; j < 6; j++)
+        {
+            cout << "Data size: " << data_size[j] << '\n';
+
+            // generate arr
+            int *a = new int[data_size[j]];
+            int *tmp = new int[data_size[j]]; //need tmp to sort
+            int *tmp2 = new int[data_size[j]];
+            Generate(data_order[i], a, data_size[j]);
+
+            for(int k = 0; k < 11; k++)
+            {
+                // reset tmp like the origin arr
+                for(int h = 0; h < data_size[j]; h++) 
+                {
+                    tmp[h] = a[h];
+                    tmp2[h] = a[h];
+                }
+
+                cout << algorithms_name[k] << '\n';
+
+                
+                void (*findRunTime)(int *&, int, long long &) = NULL;
+                void (*countComparisons)(int *&, int, long long &) = NULL;
+                long long time = -1, cnt = 0;
+
+                // choose algorithm
+                selectAlgorithm(findRunTime, countComparisons, algorithms_name[k]);
+                findRunTime(tmp, data_size[j], time);
+                countComparisons(tmp2, data_size[j], cnt);
+                cout << "Running time: " << time << '\n';
+                cout << "Comparisons: " << cnt << '\n';
+                cout << "---------------------------\n";
+                cout << '\n';
+                
+            }
+            delete[] a;
+            delete[] tmp;
+            delete[] tmp2;
+            cout << '\n';
+        }
+        cout << '\n';
+    }
+    return 0;
+}
+*/
