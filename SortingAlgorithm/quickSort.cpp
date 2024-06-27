@@ -49,7 +49,7 @@ int partitionCompare(int *&arr, int left, int right, long long &cnt_cmp)
 
 void quickSortCounting(int *&arr, int left, int right, long long &cnt_cmp)
 {
-    if(left < right)
+    if(++cnt_cmp && left < right)
     {
         int p = partitionCompare(arr, left, right, cnt_cmp);
         quickSortCounting(arr, left, p, cnt_cmp);
