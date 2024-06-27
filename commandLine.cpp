@@ -163,9 +163,22 @@ void command_1(string algorithmName, string inputFileName, string outputParamete
 
         if (findRunTime && countComparisons)
         {
+            string tmp2;
+            if(algorithmName == "bubble-sort") tmp2 = "Bubble Sort";
+            if(algorithmName == "counting-sort") tmp2 = "Counting Sort";
+            if(algorithmName == "flash-sort") tmp2 = "Flash Sort";
+            if(algorithmName == "heap-sort") tmp2 = "Heap Sort";
+            if(algorithmName == "insertion-sort") tmp2 = "Insertion Sort";
+            if(algorithmName == "merge-sort") tmp2 = "Merge Sort";
+            if(algorithmName == "quick-sort") tmp2 = "Quick Sort";
+            if(algorithmName == "radix-sort") tmp2 = "Radix Sort";
+            if(algorithmName == "selection-sort") tmp2 = "Selection Sort";
+            if(algorithmName == "shaker-sort") tmp2 = "Shaker Sort";
+            if(algorithmName == "shell-sort") tmp2 = "Shell Sort";
+
             // print information
             cout << "ALGORITHM MODE\n";
-            cout << "Algorithm: " << algorithmName << endl;
+            cout << "Algorithm: " << tmp2 << endl;
             cout << "Input file: " << inputFileName << endl;
             cout << "Input size: " << size << endl;
             cout << "--------------------------\n";
@@ -234,7 +247,7 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
         cout << "Input size: " << size << '\n';
         cout << "Input order: " << tmp << '\n';
         cout << "----------------------------\n";
-        if(time >= 0) cout << "Running time: " << time << '\n';
+        if(time >= 0) cout << "Running time: " << time << " miliseconds\n";
         if(cnt_cmp > 2) cout << "Comparisons:" << cnt_cmp << '\n';
     }
     else  
@@ -387,12 +400,38 @@ void command_4(string algorithmName_1, string algorithmName_2, string filenameIn
             return;
         }
 
+        string tmp;
+        if(algorithmName_1 == "bubble-sort") tmp = "Bubble Sort";
+        if(algorithmName_1 == "counting-sort") tmp = "Counting Sort";
+        if(algorithmName_1 == "flash-sort") tmp = "Flash Sort";
+        if(algorithmName_1 == "heap-sort") tmp = "Heap Sort";
+        if(algorithmName_1 == "insertion-sort") tmp = "Insertion Sort";
+        if(algorithmName_1 == "merge-sort") tmp = "Merge Sort";
+        if(algorithmName_1 == "quick-sort") tmp = "Quick Sort";
+        if(algorithmName_1 == "radix-sort") tmp = "Radix Sort";
+        if(algorithmName_1 == "selection-sort") tmp = "Selection Sort";
+        if(algorithmName_1 == "shaker-sort") tmp = "Shaker Sort";
+        if(algorithmName_1 == "shell-sort") tmp = "Shell Sort";
+
+        string tmp2;
+        if(algorithmName_2 == "bubble-sort") tmp2 = "Bubble Sort";
+        if(algorithmName_2 == "counting-sort") tmp2 = "Counting Sort";
+        if(algorithmName_2 == "flash-sort") tmp2 = "Flash Sort";
+        if(algorithmName_2 == "heap-sort") tmp2 = "Heap Sort";
+        if(algorithmName_2 == "insertion-sort") tmp2 = "Insertion Sort";
+        if(algorithmName_2 == "merge-sort") tmp2 = "Merge Sort";
+        if(algorithmName_2 == "quick-sort") tmp2 = "Quick Sort";
+        if(algorithmName_2 == "radix-sort") tmp2 = "Radix Sort";
+        if(algorithmName_2 == "selection-sort") tmp2 = "Selection Sort";
+        if(algorithmName_2 == "shaker-sort") tmp2 = "Shaker Sort";
+        if(algorithmName_2 == "shell-sort") tmp2 = "Shell Sort"; 
+
         cout << "COMPARE MODE\n";
-        cout << "Algorithm: " << algorithmName_1 << " | " << algorithmName_2 << '\n';
+        cout << "Algorithm: " << tmp << " | " << tmp2 << '\n';
         cout << "Input file: " <<  filenameInput << '\n';
         cout << "Input size: " << size << '\n'; 
         cout << "----------------------------\n";
-        cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
+        cout << "Running time: " << time_1 << " | " << time_2 << "  miliseconds\n";
         cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
     }
     else cout << "ERROR READING ARRAY FILE!!!\n";
@@ -452,16 +491,42 @@ void command_5(string algorithmName_1, string algorithmName_2, int size, string 
 
     // cout
     string tmp;
-    if(inputOrder == "-rand") tmp = "randomized data";
-    if(inputOrder == "-nsorted") tmp = "nearly sorted data";
-    if(inputOrder == "-sorted") tmp = "sorted data";
-    if(inputOrder == "-rev") tmp = "reverse sorted data";
+    if(inputOrder == "-rand") tmp = "Random Data";
+    if(inputOrder == "-nsorted") tmp = "Nearly Sorted Data";
+    if(inputOrder == "-sorted") tmp = "Sorted Data";
+    if(inputOrder == "-rev") tmp = "Reverse Sorted Data";
+
+    string tmp1;
+        if(algorithmName_1 == "bubble-sort") tmp1 = "Bubble Sort";
+        if(algorithmName_1 == "counting-sort") tmp1 = "Counting Sort";
+        if(algorithmName_1 == "flash-sort") tmp1 = "Flash Sort";
+        if(algorithmName_1 == "heap-sort") tmp1 = "Heap Sort";
+        if(algorithmName_1 == "insertion-sort") tmp1 = "Insertion Sort";
+        if(algorithmName_1 == "merge-sort") tmp1 = "Merge Sort";
+        if(algorithmName_1 == "quick-sort") tmp1 = "Quick Sort";
+        if(algorithmName_1 == "radix-sort") tmp1 = "Radix Sort";
+        if(algorithmName_1 == "selection-sort") tmp1 = "Selection Sort";
+        if(algorithmName_1 == "shaker-sort") tmp1 = "Shaker Sort";
+        if(algorithmName_1 == "shell-sort") tmp1 = "Shell Sort";
+
+        string tmp2;
+        if(algorithmName_2 == "bubble-sort") tmp2 = "Bubble Sort";
+        if(algorithmName_2 == "counting-sort") tmp2 = "Counting Sort";
+        if(algorithmName_2 == "flash-sort") tmp2 = "Flash Sort";
+        if(algorithmName_2 == "heap-sort") tmp2 = "Heap Sort";
+        if(algorithmName_2 == "insertion-sort") tmp2 = "Insertion Sort";
+        if(algorithmName_2 == "merge-sort") tmp2 = "Merge Sort";
+        if(algorithmName_2 == "quick-sort") tmp2 = "Quick Sort";
+        if(algorithmName_2 == "radix-sort") tmp2 = "Radix Sort";
+        if(algorithmName_2 == "selection-sort") tmp2 = "Selection Sort";
+        if(algorithmName_2 == "shaker-sort") tmp2 = "Shaker Sort";
+        if(algorithmName_2 == "shell-sort") tmp2 = "Shell Sort"; 
 
     cout << "COMPARE MODE\n";
-    cout << "Algorithm: " << algorithmName_1 << " | " << algorithmName_2 << '\n';
+    cout << "Algorithm: " << tmp1 << " | " << tmp2 << '\n';
     cout << "Input size: " << size << '\n';
     cout << "Input order: " << tmp << '\n';
     cout << "----------------------------\n";
-    cout << "Running time: " << time_1 << " | " << time_2 << "  (miliseconds)\n";
+    cout << "Running time: " << time_1 << " | " << time_2 << "  miliseconds\n";
     cout << "Comparisons: " << cnt_1 << " | " << cnt_2 << '\n';
 }

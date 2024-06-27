@@ -1,59 +1,82 @@
 #include "../header.h"
 
 
-
-int partition(int *&arr, int left, int right)
+int partition(int *&arr, int left, int right) 
 {
-    // this code base on Hoare's quick sort
-    int pivot = arr[left], i = left - 1, j = right + 1;
-    while(true)
-    {
-        do { i++; } while (arr[i] < pivot);
-        do { j--; } while (arr[j] > pivot);
+    // Choose a pivot (median-of-three)
+    int mid = left + (right - left) / 2;
+    int pivot = arr[mid];
 
-        if(i >= j) break;
+    // Move pivot to end
+    swap(arr[mid], arr[right]);
 
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+    int i = left - 1; // Index of smaller element
+
+    // Partitioning
+    for (int j = left; j < right; ++j) {
+        if (arr[j] <= pivot) {
+            ++i;
+            swap(arr[i], arr[j]);
+        }
     }
-    return j;
+
+    // Move pivot to its correct position
+    swap(arr[i + 1], arr[right]);
+
+    return i + 1;
 }
-void quickSort(int *&arr, int left, int right)
+
+// Recursive function to perform quicksort
+void quickSort(int *&arr, int left, int right) 
 {
-    if(left < right)
-    {
-        int p = partition(arr, left, right);
-        quickSort(arr, left, p);      // Sort elements before partition
-        quickSort(arr, p + 1, right); // Sort elements after partition
+    if (left < right) {
+        // Partition the array
+        int pivotIndex = partition(arr, left, right);
+
+        // Recursively sort the left and right subarrays
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
     }
 }
 
 // count comparisons
 int partitionCompare(int *&arr, int left, int right, long long &cnt_cmp)
 {
-    int pivot = arr[left], i = left - 1, j = right + 1;
-    while(true)
+    // Choose a pivot (e.g., median-of-three)
+    int mid = left + (right - left) / 2;
+    int pivot = arr[mid];
+
+    // Move pivot to end
+    swap(arr[mid], arr[right]);
+
+    int i = left - 1; // Index of smaller element
+
+    // Partitioning
+    for (int j = left; ++cnt_cmp && j < right; ++j) 
     {
-        do { i++; } while (++cnt_cmp && arr[i] < pivot);
-        do { j--; } while (++cnt_cmp && arr[j] > pivot);
-
-        if(++cnt_cmp && i >= j) break;
-
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+        if (++cnt_cmp && arr[j] <= pivot) 
+        {
+            ++i;
+            swap(arr[i], arr[j]);
+        }
     }
-    return j;
+
+    // Move pivot to its correct position
+    swap(arr[i + 1], arr[right]);
+
+    return i + 1;
 }
 
 void quickSortCounting(int *&arr, int left, int right, long long &cnt_cmp)
 {
-    if(++cnt_cmp && left < right)
+    if (++cnt_cmp && left < right) 
     {
-        int p = partitionCompare(arr, left, right, cnt_cmp);
-        quickSortCounting(arr, left, p, cnt_cmp);
-        quickSortCounting(arr, p + 1, right, cnt_cmp);
+        // Partition the array
+        int pivotIndex = partitionCompare(arr, left, right, cnt_cmp);
+
+        // Recursively sort the left and right subarrays
+        quickSortCounting(arr, left, pivotIndex - 1, cnt_cmp);
+        quickSortCounting(arr, pivotIndex + 1, right, cnt_cmp);
     }
 }
 
@@ -77,18 +100,20 @@ void quickSortFindRunTime(int *&arr, int n, long long &time)
 Thank you Chat-GPT for helping correct grammar and algorithm commentline 
 
 IDEAS:
-    This implementation of Quick Sort is based on Hoare's partition scheme. 
-    It sorts an array by selecting a pivot element and partitioning the array around the pivot such that elements less than the pivot are on the left and elements greater than the pivot are on the right. 
+    This implementation of Quick Sort uses the median-of-three pivot selection strategy and Hoare's partition scheme. 
+    Quick Sort sorts an array by selecting a pivot element and partitioning the array around the pivot such that elements less than the pivot are on the left and elements greater than the pivot are on the right. 
     The process is then recursively applied to the sub-arrays formed by the partitioning.
 
 STEP BY STEP DESCRIPTION:
-    1. Define the partition function to select the pivot and partition the array.
-    2. Initialize two pointers, i starting just before the left index and j just after the right index.
-    3. Move the i pointer rightward until an element greater than or equal to the pivot is found.
-    4. Move the j pointer leftward until an element less than or equal to the pivot is found.
-    5. If i is less than j, swap the elements at i and j, then continue the process.
-    6. If i is greater than or equal to j, the partitioning is complete, and the partition function returns the index j.
-    7. In the quickSort function, recursively apply the partition function to the sub-arrays to the left and right of the pivot index returned by the partition function.
+    1. Define the partition function to select the pivot using the median-of-three method:
+       - Choose the middle element as the pivot.
+       - Move the pivot element to the end of the array temporarily.
+       - Initialize a pointer i to track the smaller elements.
+       - Iterate through the array and swap elements such that elements less than or equal to the pivot are placed to the left of i.
+       - Move the pivot element to its correct position after partitioning.
+    2. Implement the recursive quickSort function:
+       - Partition the array using the partition function.
+       - Recursively apply quickSort to the left and right sub-arrays formed by the partitioning.
 
 COMPLEXITY EVALUATIONS:
 n is the number of elements in the array.

@@ -11,6 +11,7 @@
 #include "DataGenerator.cpp"
 using namespace std;
 
+void swap(int &a, int &b);
 void bubbleSort(int* &arr, int n);
 void bubbleSortCountComparisons(int* &arr, int n, long long& count_comparisons);
 void bubbleSortFindRunTime(int *&arr, int n, long long &time);
