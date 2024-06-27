@@ -206,6 +206,9 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
     {
         doForOutputParameter(findRunTime, countComparisons, arr, size, outputPara, time, cnt_cmp);
 
+        // write file
+        writeFile("output.txt", arr, size);
+
         // cout 
         string tmp;
         if(inputOrder == "-rand") tmp = "Randomized Data";
