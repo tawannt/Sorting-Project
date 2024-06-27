@@ -100,9 +100,7 @@ void quickSortFindRunTime(int *&arr, int n, long long &time)
 Thank you Chat-GPT for helping correct grammar and algorithm commentline 
 
 IDEAS:
-    This implementation of Quick Sort uses the median-of-three pivot selection strategy and Hoare's partition scheme. 
-    Quick Sort sorts an array by selecting a pivot element and partitioning the array around the pivot such that elements less than the pivot are on the left and elements greater than the pivot are on the right. 
-    The process is then recursively applied to the sub-arrays formed by the partitioning.
+    This implementation of Quick Sort uses the median-of-three pivot selection strategy and Hoare's partition scheme. Quick Sort sorts an array by selecting a pivot element and partitioning the array around the pivot such that elements less than the pivot are on the left and elements greater than the pivot are on the right. The process is then recursively applied to the sub-arrays formed by the partitioning.
 
 STEP BY STEP DESCRIPTION:
     1. Define the partition function to select the pivot using the median-of-three method:
@@ -120,8 +118,7 @@ n is the number of elements in the array.
 
 1/ Time complexity analysis: 
    + Mathematics proof: 
-   		Quick Sort involves recursively dividing the array into two halves. Each partition step takes O(n) time, and there are log(n) levels of recursion in the average case. 
-        Thus, the average time complexity is O(n log n).
+   		Quick Sort involves recursively dividing the array into two halves. Each partition step takes O(n) time, and in the best and average cases, the partition divides the array roughly in half. Thus, the average time complexity is O(n log n).
 	+ Best case: O(n log n)
 		Occurs when the pivot selection consistently results in nearly equal partitions.
 	+ Worst case: O(n^2)
@@ -130,8 +127,7 @@ n is the number of elements in the array.
 		In most cases, the pivot results in reasonably balanced partitions, leading to an average time complexity of O(n log n).
 		
 2/ Space complexity analysis:
-	Space complexity is O(log n) due to the recursion stack. Each recursive call adds to the stack, and in the average case, 
-    the depth of recursion is O(log n). However, in the worst case, the recursion stack can grow to O(n).
+	Space complexity is O(log n) due to the recursion stack. Each recursive call adds to the stack, and in the average case, the depth of recursion is O(log n). However, in the worst case, the recursion stack can grow to O(n).
 
 SUMMARY:
 	+ Advantage:
@@ -141,12 +137,12 @@ SUMMARY:
 	+ Disadvantage:
 		- Worst-case time complexity of O(n^2).
 		- Performance heavily depends on the pivot selection.
-		- Not stable: equal elements may not retain their original order.
+		- Not stable; equal elements may not retain their original order.
 		
 OPTIMIZED:
 	- Use randomization or median-of-three for pivot selection to reduce the chances of worst-case scenario.
 	- Hybrid approaches like using insertion sort for small sub-arrays to improve performance.
-
+    
 REFERENCES:
     + Basic quick sort base on Hoare's quick sort: https://www.geeksforgeeks.org/hoares-vs-lomuto-partition-scheme-quicksort/
     + Run time and counting comparisons is based on basic and refered to lab2 and guide of teacher Bui Huy Thong and Tran Thi Thao Nhi. 
