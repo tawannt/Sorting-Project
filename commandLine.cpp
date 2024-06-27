@@ -208,10 +208,10 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
 
         // cout 
         string tmp;
-        if(inputOrder == "-rand") tmp = "randomized data";
-        if(inputOrder == "-nsorted") tmp = "nearly sorted data";
-        if(inputOrder == "-sorted") tmp = "sorted data";
-        if(inputOrder == "-rev") tmp = "reverse sorted data";
+        if(inputOrder == "-rand") tmp = "Randomized Data";
+        if(inputOrder == "-nsorted") tmp = "Nearly Sorted Data";
+        if(inputOrder == "-sorted") tmp = "Sorted Data";
+        if(inputOrder == "-rev") tmp = "Reverse Sorted Data";
 
         string tmp2;
         if(algorithmName == "bubble-sort") tmp2 = "Bubble Sort";
