@@ -213,7 +213,21 @@ void command_2(string algorithmName, int size, string inputOrder, string outputP
         if(inputOrder == "-sorted") tmp = "sorted data";
         if(inputOrder == "-rev") tmp = "reverse sorted data";
 
+        string tmp2;
+        if(algorithmName == "bubble-sort") tmp2 = "Bubble Sort";
+        if(algorithmName == "counting-sort") tmp2 = "Counting Sort";
+        if(algorithmName == "flash-sort") tmp2 = "Flash Sort";
+        if(algorithmName == "heap-sort") tmp2 = "Heap Sort";
+        if(algorithmName == "insertion-sort") tmp2 = "Insertion Sort";
+        if(algorithmName == "merge-sort") tmp2 = "Merge Sort";
+        if(algorithmName == "quick-sort") tmp2 = "Quick Sort";
+        if(algorithmName == "radix-sort") tmp2 = "Radix Sort";
+        if(algorithmName == "selection-sort") tmp2 = "Selection Sort";
+        if(algorithmName == "shaker-sort") tmp2 = "Shaker Sort";
+        if(algorithmName == "shell-sort") tmp2 = "Shell Sort"; 
+
         cout << "ALGORITHM MODE\n";
+        cout << "Algorithm: " << tmp2 << '\n';
         cout << "Input size: " << size << '\n';
         cout << "Input order: " << tmp << '\n';
         cout << "----------------------------\n";
