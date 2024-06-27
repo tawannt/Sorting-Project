@@ -24,8 +24,8 @@ void quickSort(int *&arr, int left, int right)
     if(left < right)
     {
         int p = partition(arr, left, right);
-        quickSort(arr, left, p);
-        quickSort(arr, p + 1, right);
+        quickSort(arr, left, p);      // Sort elements before partition
+        quickSort(arr, p + 1, right); // Sort elements after partition
     }
 }
 
