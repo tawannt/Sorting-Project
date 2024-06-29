@@ -12,14 +12,6 @@
 #include "SortingAlgorithm/shellSort.cpp"
 #include "commandLine.cpp"
 
-bool isNum(string str){
-    for (int i = 0; i < str.length(); i++){
-        if (!(str[i] >= 48 && str[i] <= 57)) {
-            return false;
-        }
-    }
-    return true;
-}
 
 int main(int argc, const char *argv[])
 {
