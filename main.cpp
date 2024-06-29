@@ -12,14 +12,6 @@
 #include "SortingAlgorithm/shellSort.cpp"
 #include "commandLine.cpp"
 
-bool isNum(string str){
-    for (int i = 0; i < str.length(); i++){
-        if (!(str[i] >= 48 && str[i] <= 57)) {
-            return false;
-        }
-    }
-    return true;
-}
 
 int main(int argc, const char *argv[])
 {
@@ -149,54 +141,3 @@ int main()
     return 0;
 }
 */
-
-
-// this main make getting data easier 
-// int main()
-// {
-//     string data_order[4] = {"-rand", "-nsorted", "-sorted", "-rev"};
-//     int data_size[6] = {10000, 30000, 50000, 100000, 300000, 500000};
-//     string algorithms_name[11] = {"selection-sort", "insertion-sort", "bubble-sort", "heap-sort", "merge-sort", "quick-sort", "radix-sort", "shaker-sort", "shell-sort", "counting-sort", "flash-sort"};
-//     for(int i = 1; i < 4; i++)
-//     {
-//         cout << data_order[i] << '\n';
-
-//         for(int j = 0; j < 6; j++)
-//         {
-//             cout << "Data size: " << data_size[j] << '\n';
-
-//             // generate arr
-//             int *a = new int[data_size[j]];
-//             int *tmp = new int[data_size[j]]; //need tmp to sort
-//             int *tmp2 = new int[data_size[j]];
-//             Generate(data_order[i], a, data_size[j]);
-
-//             for(int k = 0; k < 11; k++)
-//             {
-//                 // reset tmp like the origin arr
-//                 for(int h = 0; h < data_size[j]; h++) 
-//                 {
-//                     tmp[h] = a[h];
-//                     tmp2[h] = a[h];
-//                 }
-                
-//                 void (*findRunTime)(int *&, int, long long &) = NULL;
-//                 void (*countComparisons)(int *&, int, long long &) = NULL;
-//                 long long time = -1, cnt = 0;
-
-//                 // choose algorithm
-//                 selectAlgorithm(findRunTime, countComparisons, algorithms_name[k]);
-//                 findRunTime(tmp, data_size[j], time);
-//                 countComparisons(tmp2, data_size[j], cnt);
-//                 cout << time << " , " << cnt << '\n';
-                
-//             }
-//             delete[] a;
-//             delete[] tmp;
-//             delete[] tmp2;
-//             cout << '\n';
-//         }
-//         cout << '\n';
-//     }
-//     return 0;
-// }
