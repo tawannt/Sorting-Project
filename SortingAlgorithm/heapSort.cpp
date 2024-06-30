@@ -27,7 +27,7 @@ void heapSort(int* &arr, int n)
     for(int i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
-    for(int i = n - 1; i > 0; i--)
+    for(int i = n - 1; i >= 0; i--)
     {
         swap(arr[i], arr[0]); //move the max to the end
         heapify(arr, i, 0); //reduced the heap
@@ -61,7 +61,7 @@ void heapSortCountComparisons(int* &arr, int n, long long &count_comparisons) //
     for(int i = n/2 - 1; ++count_comparisons && i >= 0; i--)
         heapifyCountComparisons(arr, n, i, count_comparisons);
 
-    for(int i = n - 1; ++count_comparisons && i > 0; i--)
+    for(int i = n - 1; ++count_comparisons && i >= 0; i--)
     {
         swap(arr[i], arr[0]);
         heapifyCountComparisons(arr, i, 0, count_comparisons);
@@ -74,7 +74,7 @@ void heapSortFindRunTime(int* &arr, int n, long long &run_time)
     for(int i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
-    for(int i = n - 1; i > 0; i--)
+    for(int i = n - 1; i >= 0; i--)
     {
         swap(arr[i], arr[0]);
         heapify(arr, i, 0);
