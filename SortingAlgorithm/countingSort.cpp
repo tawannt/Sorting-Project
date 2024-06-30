@@ -49,8 +49,8 @@ void countingSortCountComparisons(int* &arr, int n, long long& count_comparisons
 
     for(int i = 1; ++count_comparisons && i < n; i++)
     {
-        if(arr[i] > maxElement && ++count_comparisons) maxElement = arr[i];
-        if(arr[i] < minElement && ++count_comparisons) minElement = arr[i];
+        if(++count_comparisons && arr[i] > maxElement) maxElement = arr[i];
+        if(++count_comparisons && arr[i] < minElement) minElement = arr[i];
     }
 
     int range = maxElement - minElement + 1;
