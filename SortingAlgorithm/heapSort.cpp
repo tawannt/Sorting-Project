@@ -51,7 +51,7 @@ void heapifyCountComparisons(int* &arr, int n, int i, long long &count_compariso
     if(++count_comparisons && largest != i)
     {
         swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        heapifyCountComparisons(arr, n, largest, count_comparisons);
     }
 }
 
