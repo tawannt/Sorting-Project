@@ -75,7 +75,7 @@ void shakerSortCountComparisons(int* &arr, int n, long long &cnt_cmp)
         if(++cnt_cmp && swapped == false) break;
 
         swapped = false;
-        for(int k = j - 1; k > i; k--)
+        for(int k = j - 1; ++cnt_cmp && k > i; k--)
         {
             if(++cnt_cmp && arr[k] < arr[k - 1])
             {
