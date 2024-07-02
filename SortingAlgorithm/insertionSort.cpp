@@ -14,7 +14,7 @@ void insertionSort(int* &arr, int n)
     }
 }
 
-void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisons) // comparisons not comparisions 
+void insertionSortCountComparisons(int* &arr, int n, long long &count_comparisons) 
 {
     count_comparisons = 0;
     int key, prev;
