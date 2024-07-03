@@ -2,10 +2,7 @@
 #define _HEADER_H_
 #include <iostream>
 #include <string>
-#include <vector>
-#include <string.h>
 #include <fstream>
-#include <stdlib.h>
 // #include <time.h> We had used it for the begin but it does not work well
 #include <chrono>
 #include "DataGenerator.cpp"
